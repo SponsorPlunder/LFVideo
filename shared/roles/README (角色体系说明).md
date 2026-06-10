@@ -34,7 +34,7 @@
 
 ## 角色清单
 
-### 视频生产线（5个）
+### 视频生产线（11个）
 
 | 角色 | 何时使用 | 状态 |
 |------|---------|------|
@@ -42,8 +42,13 @@
 | [内容策划师](./content/strategist(内容策划师).md) | 导演分镜、Demo 设计、故事大纲（苏格拉底协同） | ✅ 可用 |
 | [视听策划师](./content/visual-planner(视听策划师).md) | Remotion 组件映射、Props 接口、动画 Cue、录屏 zoom 指令 | ✅ 可用 |
 | [文案撰稿人](./content/copywriter(文案撰稿人).md) | 视频脚本、知乎文章、小红书图文 | ✅ 可用 |
+| [屏幕录制导演](./content/screen-capture-director(屏幕录制导演).md) | 按 03 蓝图录制 B 轨 IDE/终端操作演示 | ✅ 可用 |
+| [语音合成工程师](./content/tts-engineer(语音合成工程师).md) | TTS 引擎选型、口播文本转语音音频 | ✅ 可用 |
 | [视频工程师](./content/motion-engineer(视频工程师).md) | 用 Remotion 把脚本组装成片（A/B 两轨） | ✅ 可用 |
-| [字幕编辑](./content/subtitle-editor(字幕编辑).md) | Whisper字幕校对、时间轴整理 | 🚧 占位 |
+| [字幕编辑](./content/subtitle-editor(字幕编辑).md) | Whisper 转录、SRT/VTT 字幕生成与校对 | ✅ 可用 |
+| [音频混音师](./content/audio-mixer(音频混音师).md) | BGM 选曲、音效设计、多轨混音与响度标准化 | ✅ 可用 |
+| [封面设计师](./content/cover-designer(封面设计师).md) | 多平台封面/缩略图设计（16:9/9:16/1:1） | ✅ 可用 |
+| [质检工程师](./content/qa-engineer(质检工程师).md) | 成片发布前自动化 + 人工质量检测 | ✅ 可用 |
 | [分发助手](./content/distributor(分发助手).md) | 各平台标题/描述/标签 + 短视频切片策略 | ✅ 可用 |
 
 ### 实战内容线（4个）

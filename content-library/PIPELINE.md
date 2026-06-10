@@ -1,6 +1,6 @@
 # Pipeline 看板
 
-> 全局生产进度：所有期 × 4 阶段的人工审核状态。每推进一阶段，更新本表。
+> 全局生产进度：所有期 × 13 阶段的人工审核状态。每推进一阶段，更新本表。
 
 ## 状态说明
 
@@ -11,17 +11,17 @@
 
 ## 进度表
 
-| 期 | 01 选题 | 02 策划 | 03 B站视听 | 04 脚本 | 05 组装 | 06 分发 | 07 归档 | 备注 |
-|----|---------|---------|------------|---------|---------|---------|---------|------|
-| **系列一：AI 视频自动化** | | | | | | | | |
-| ep01-video-agent-overview | approved | approved | approved | approved | approved | approved | approved | 总体构建：IDE 智能体 + Python 工具 + React 编译器 (已完结) |
-| ep02-video-render | approved | approved | draft | draft | draft | draft | - | 渲染引擎：代码即视频 + 流程即代码 (本期) |
-| ep03-video-subtitle | - | - | - | - | - | - | - | 字幕卡点：Whisper 毫秒级时间戳驱动 React 弹跳字幕 |
-| ep04-video-orchestrator | - | - | - | - | - | - | - | 智能体编排：YAML 管道与 Markdown 导演规则指挥 Agent |
-| **系列二：PPT 演示文稿自动化** | | | | | | | | |
-| ep05-ppt-marp-overview | - | - | - | - | - | - | - | Marp 总体构建：为什么 Markdown 是 AI IDE 唯一解？ |
-| ep06-ppt-css-theme | - | - | - | - | - | - | - | 深度排版主题：用 CSS Themes 与 Tailwind 对齐 PPT 排版 |
-| ep07-ppt-slidev-react | - | - | - | - | - | - | - | 交互式 React 幻灯片：使用 Slidev 注入动态代码终端 |
+| 期 | 01 选题 | 02 策划 | 03 B站视听 | 04 脚本 | 05 B轨录屏 | 06 TTS | 07 组装 | 08 字幕 | 09 BGM | 10 封面 | 11 质检 | 12 分发 | 13 归档 | 备注 |
+|----|---------|---------|------------|---------|----------|--------|---------|--------|-------|--------|--------|--------|--------|------|
+| **系列一：AI 视频自动化** | | | | | | | | | | | | | | |
+| ep01-video-agent-overview | approved | approved | approved | approved | - | - | approved | - | - | - | - | approved | approved | 总体构建：IDE 智能体 + Python 工具 + React 编译器 (已完结) |
+| ep02-video-render | approved | approved | draft | draft | - | - | draft | - | - | - | - | draft | - | 渲染引擎：代码即视频 + 流程即代码 (本期) |
+| ep03-video-subtitle | - | - | - | - | - | - | - | - | - | - | - | - | - | 字幕卡点：Whisper 毫秒级时间戳驱动 React 弹跳字幕 |
+| ep04-video-orchestrator | - | - | - | - | - | - | - | - | - | - | - | - | - | 智能体编排：YAML 管道与 Markdown 导演规则指挥 Agent |
+| **系列二：PPT 演示文稿自动化** | | | | | | | | | | | | | | |
+| ep05-ppt-marp-overview | - | - | - | - | - | - | - | - | - | - | - | - | - | Marp 总体构建：为什么 Markdown 是 AI IDE 唯一解？ |
+| ep06-ppt-css-theme | - | - | - | - | - | - | - | - | - | - | - | - | - | 深度排版主题：用 CSS Themes 与 Tailwind 对齐 PPT 排版 |
+| ep07-ppt-slidev-react | - | - | - | - | - | - | - | - | - | - | - | - | - | 交互式 React 幻灯片：使用 Slidev 注入动态代码终端 |
 
 ## 审核门规则（L0.5 单核校验门）
 
