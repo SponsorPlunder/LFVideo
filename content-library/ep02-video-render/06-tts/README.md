@@ -1,6 +1,6 @@
 ---
 stage: 06-tts-synthesis
-status: draft
+status: approved
 source_workflow: /06-tts-synthesis
 upstream_inputs:
   - 04-script/README.md (status: draft)
