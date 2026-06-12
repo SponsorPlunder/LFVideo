@@ -487,17 +487,23 @@ export const CollageBurst: React.FC<CollageBurstProps> = ({
             opacity: 0.55,
           }}
         >
-          <OffthreadVideo
-            src={resolveAsset(backgroundSrc)}
-            startFrom={Math.round(backgroundInSeconds * fps)}
-            muted
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
+          {backgroundSrc ? (
+            <OffthreadVideo
+              src={resolveAsset(backgroundSrc)}
+              startFrom={Math.round(backgroundInSeconds * fps)}
+              muted
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          ) : (
+            <AbsoluteFill style={{ backgroundColor: "#1e293b", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ color: "#94a3b8", fontSize: 24 }}>[视频占位符: backgroundSrc 未配置]</div>
+            </AbsoluteFill>
+          )}
         </AbsoluteFill>
       )}
 

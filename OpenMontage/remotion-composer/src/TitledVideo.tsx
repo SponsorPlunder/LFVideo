@@ -20,6 +20,7 @@ const { fontFamily } = loadFont("normal", {
 });
 
 export interface TitledVideoProps {
+  [key: string]: unknown;
   videoSrc: string;
   tagline: string;
   // When the tagline starts animating in, in seconds from the start of the video.
@@ -214,14 +215,20 @@ export const TitledVideo: React.FC<TitledVideoProps> = ({
       {/* Full-bleed background video — no fades, no vignette, no color shift.
           The source is already color-graded final.mp4 with music baked in;
           we play it through untouched, audio included. */}
-      <OffthreadVideo
-        src={resolveAsset(videoSrc)}
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
-      />
+      {videoSrc ? (
+        <OffthreadVideo
+          src={resolveAsset(videoSrc)}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      ) : (
+        <AbsoluteFill style={{ backgroundColor: "#1e293b", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ color: "#94a3b8", fontSize: fontSize, fontFamily: fontFamily }}>[视频占位符: videoSrc 未配置]</div>
+        </AbsoluteFill>
+      )}
 
       {/* Tagline overlay in its own Sequence so it mounts exactly on the
           fade-in frame and carries its own local frame counter. */}

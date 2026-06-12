@@ -436,6 +436,10 @@ const Soundtrack: React.FC<{
     },
   );
 
+  if (!src) {
+    return null;
+  }
+
   return (
     <Audio
       src={resolveAsset(src)}

@@ -17,6 +17,7 @@ import { CaptionOverlay, WordCaption } from "./components/CaptionOverlay";
 import { CollageBurst, CollageBurstProps } from "./CollageBurst";
 import { LyricOverlay, LyricOverlayProps } from "./LyricOverlay";
 import { TimelineScene, TableScene } from "./custom-templates";
+import ep02VideoRenderProps from "../public/demo-props/ep02-video-render.json";
 
 // ---------------------------------------------------------------------------
 // Theme System — prevents every video from looking like dark fintech
@@ -149,6 +150,16 @@ export const Root: React.FC = () => {
           captions: [],
           audio: {},
         }}
+        calculateMetadata={calculateMetadata}
+      />
+      <Composition
+        id="ep02-video-render"
+        component={Explainer}
+        durationInFrames={30 * 60}
+        fps={30}
+        width={1920}
+        height={1080}
+        defaultProps={ep02VideoRenderProps as ExplainerProps}
         calculateMetadata={calculateMetadata}
       />
       <Composition

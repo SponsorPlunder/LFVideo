@@ -68,3 +68,18 @@ ai-ide-workflows/ (项目根目录)
 - **IDE 适配**：
   - **Cursor**：通过 `.cursor/rules/*.mdc` 进行被动约束，仅做**路径指向与适配**，不复制角色内容。
   - **Windsurf**：通过 `.windsurf/rules/` 与 `.windsurf/workflows/*.md` 进行主动编排，同样采用软链接/相对引用指向 `shared/roles/`。
+
+---
+
+## 5. React/Remotion 开发与渲染规范 (Robustness & Rendering Guidelines)
+
+### 5.1 自适应自愈模式 (Self-Healing Design Pattern)
+为了保证 Remotion Studio 预览界面的 100% 稳定性，防止在预览缺省、空配置、或临时资产时的崩溃：
+- **媒体组件守卫 (Media Guard)**：所有的原生多媒体渲染组件（如 `<OffthreadVideo>`、`<Video>`、`<Audio>`）在渲染前**必须进行 `src` 空校验与有效性守卫**。
+- **视频占位降级 (Video Fallback)**：当 `videoSrc` 或 `backgroundSrc` 为空/未配置时，必须降级渲染高对比度、暗色的 `div` 占位框（如 `[视频占位符: src 未配置]`），而非直接渲染空 `src` 的视频组件（空 `src` 会导致浏览器抛出 `MediaPlaybackError` 触发红屏崩溃）。
+- **音频零渲染守卫 (Audio Guard)**：所有的背景音轨、口播音轨组件（如 `Soundtrack`）在 `src` 为空或无效时，应立即 `return null`。
+
+### 5.2 渲染分辨率规范 (Rendering Resolution Standard)
+- **目标分辨率**：本频道视频渲染和导出统一规范为 **1080p 高清（1920×1080 @ 30fps）**，无需渲染 4K。
+- **核心考量**：1080p 在保证画质清晰度的前提下，能缩短数十倍的 Puppeteer 后台多核截图与 FFmpeg 合成时间，极大提高 AI 流水线自动迭代与成片效率。
+

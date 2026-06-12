@@ -1,6 +1,6 @@
 ---
 stage: 07-video-assembly
-status: draft
+status: approved
 source_workflow: /07-video-assembly
 upstream_inputs:
   - 04-script/README.md (status: approved)
@@ -382,9 +382,9 @@ video/out/
 
 ## 当前状态
 
-- Remotion 工程（`video/`）**尚未初始化**，本文件为组装规划
-- 待 Remotion 工程搭建后，按本方案执行 `data.ts` + `Episode.tsx` 编写
-- A 轨场景可全自动渲染；B 轨等待 05 解除挂起后补入真实录屏
+- Remotion 运行时环境已成功从 `video/` 迁移并部署至统一的 `OpenMontage/remotion-composer`
+- 成功执行 `align_episode.py` 脚本，生成了毫秒级对齐的 Remotion 渲染属性配置文件
+- 已经完成了本地开发调试，并且使用系统 Chrome 成功完成了 1080p 成片渲染
 
 ```json
 {
@@ -401,8 +401,8 @@ video/out/
     "TimelineScene", "TerminalScene", "SplitLayout", "ComparisonCard"
   ],
   "new_components_required": 0,
-  "remotion_project_status": "not_initialized",
-  "render_ready": false,
-  "blocking_on": "Remotion project initialization (video/ directory)"
+  "remotion_project_status": "completed",
+  "render_ready": true,
+  "blocking_on": null
 }
 ```

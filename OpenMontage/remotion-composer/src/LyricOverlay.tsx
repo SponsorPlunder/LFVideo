@@ -164,7 +164,13 @@ export const LyricOverlay: React.FC<LyricOverlayProps> = ({
   const { durationInFrames } = useVideoConfig();
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
-      <OffthreadVideo src={resolveAsset(videoSrc)} />
+      {videoSrc ? (
+        <OffthreadVideo src={resolveAsset(videoSrc)} />
+      ) : (
+        <AbsoluteFill style={{ backgroundColor: "#1e293b", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ color: "#94a3b8", fontSize: 24 }}>[视频占位符: videoSrc 未配置]</div>
+        </AbsoluteFill>
+      )}
       {lyrics.map((l, i) => (
         <LyricLine key={i} lyric={l} bottomY={bottomY} />
       ))}
