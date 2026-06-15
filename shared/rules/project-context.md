@@ -1,5 +1,8 @@
 ---
-trigger: always_on
+title: 项目上下文
+slug: project-context
+activation: always
+description: 频道母题与定位、操作层+判断层原则、工具定位、AI 助手工作原则（项目常驻规则）。
 ---
 
 # ai-ide-workflows 项目上下文

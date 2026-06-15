@@ -108,7 +108,7 @@
 | 实战内容线（4） | 产品经理 / 架构师 / 执行工程师 / 代码审查员 | 🚧 占位 |
 | 通用判断层（1） | 判断层评审（CHAI 硬核质量门） | ⏸️ 已挂起 |
 
-多 IDE 适配（single source of truth = `shared/`）：**角色**在 `shared/roles/`、**工作流**在 `shared/workflows/`（均 IDE 无关）；各 IDE 的可调用副本由 `scripts/sync_workflows.py` 生成到 `.devin/workflows/`、`.windsurf/workflows/`、`.cursor/commands/`（勿手改）。`.devin/rules/` 常驻规则与各 IDE 规则适配将在后续 PR 一并收敛。`OpenMontage/` 子工程另带 `.cursor/ .claude/ .agents/` 技能。
+多 IDE 适配（single source of truth = `shared/`）：**角色**在 `shared/roles/`、**工作流**在 `shared/workflows/`、**常驻规则**在 `shared/rules/`（均 IDE 无关）；各 IDE 的可调用副本由 sync 脚本生成——工作流 `scripts/sync_workflows.py` → `.devin/workflows/ .windsurf/workflows/ .cursor/commands/`，规则 `scripts/sync_rules.py` → `.cursor/rules/*.mdc`、`.windsurf/rules/`（勿手改）。Devin 经 `AGENT_GUIDE.md` 加载规则，无 `.devin/rules/`。`OpenMontage/` 子工程另带 `.cursor/ .claude/ .agents/` 技能。
 
 ---
 

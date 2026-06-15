@@ -2,6 +2,8 @@
 trigger: always_on
 ---
 
+<!-- AUTO-GENERATED from shared/rules/role-system.md. Do not edit here; edit the source and run `python scripts/sync_rules.py`. -->
+
 # 角色体系调用规则
 
 本项目的角色定义位于 `shared/roles/`。角色是思考视角，Agent 是执行能力；两者结合才构成完整工作流。

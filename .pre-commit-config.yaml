@@ -7,3 +7,9 @@ repos:
         language: system
         pass_filenames: false
         files: ^(shared/workflows/|\.devin/workflows/|\.windsurf/workflows/|\.cursor/commands/|scripts/sync_workflows\.py)
+      - id: sync-rules-check
+        name: rules IDE copies in sync with shared/rules
+        entry: python scripts/sync_rules.py --check
+        language: system
+        pass_filenames: false
+        files: ^(shared/rules/|\.cursor/rules/|\.windsurf/rules/|scripts/sync_rules\.py)
