@@ -151,15 +151,18 @@ LFVideo/
 
 ## 内容路线图（详见 [content-library/PIPELINE.md](./content-library/PIPELINE.md)）
 
-| 系列 | 期 | 主题 |
-|------|----|------|
-| 系列一：AI 视频自动化 | ep01-video-agent-overview | 总体构建：IDE 智能体 + Python 工具 + React 编译器（已完结） |
-| | ep02-video-render | 渲染引擎：代码即视频 + 流程即代码（**本期**） |
-| | ep03-video-subtitle | 字幕卡点：Whisper 毫秒级时间戳驱动 React 弹跳字幕 |
-| | ep04-video-orchestrator | 智能体编排：YAML 管道与 Markdown 导演规则指挥 Agent |
-| 系列二：PPT 自动化 | ep05-ppt-marp-overview | 为什么 Markdown 是 AI IDE 的 PPT 唯一解 |
-| | ep06-ppt-css-theme | 用 CSS Themes / Tailwind 对齐 PPT 排版 |
-| | ep07-ppt-slidev-react | Slidev 注入动态 React 代码终端 |
+| 系列 | 期 | 短标题 | 主题 |
+|------|----|--------|------|
+| 系列一：《Vibe Coding 造一条自动化视频生产线》 | ep01-video-agent-overview | 把视频写成代码 | 总览：IDE 智能体 + Python 工具 + React 编译器（已完结） |
+| | ep02-video-render | 代码即视频 | 渲染引擎：场景组件系统 + VRM 主持人（**本期**） |
+| | ep03-video-subtitle | 让字幕踩着话音跳 | 字幕卡点：Whisper 字级时间戳驱动弹跳字幕 |
+| | ep04-video-audio | 会让路的背景音乐 | 声音工程：智能混音、气口与响度标准化 |
+| | ep05-video-pipeline | 流程也是代码 | 13 阶段状态机 + Schema 校验门 |
+| | ep06-video-orchestrator | 给 AI 发工牌干活 | 角色即 Prompt → 智能体编排（YAML 管道） |
+| | ep07-video-tech-choices | 我踩过的选型坑 | 技术选型复盘：为什么这么选 |
+| 系列二：PPT 自动化 | ep08-ppt-marp-overview | — | 为什么 Markdown 是 AI IDE 的 PPT 唯一解 |
+| | ep09-ppt-css-theme | — | 用 CSS Themes / Tailwind 对齐 PPT 排版 |
+| | ep10-ppt-slidev-react | — | Slidev 注入动态 React 代码终端 |
 
 ---
 
