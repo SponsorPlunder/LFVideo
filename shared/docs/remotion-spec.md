@@ -15,7 +15,7 @@
    - 所有“概念解释”、“理论模型”、“金字塔图”等，优先使用已有的组件（如 `@ConceptScene` 或 `@SplitLayout`）以 2D 卡片、Emoji、纯文字排版展现。
    - **绝对禁止**幻想着写出：*“一匹 3D 马在代码荒野狂奔”、“金字塔模型从土里破土而出”* 等复杂特效。这些必须降维设计为 `@ConceptScene` 里的 2D 卡片加对应的 Emoji。
 2. **B 轨外部资产占位显式标注**：
-   - 凡是 Remotion 代码无法生成的画面（如：Cursor 真实界面截图、报错弹窗截图、人声口播 mp4、执行代码的终端录屏），必须在脚本中用 **`[B 轨占位：请用户提供 screen_error.png/mp4]`** 的格式显式标出，提醒用户后期补充。
+   - 凡是 Remotion 代码无法生成的画面（如：真实 IDE 界面/报错弹窗截图、人声口播 mp4、执行渲染命令的终端录屏），必须在脚本中用 **`[B 轨占位：请用户提供 screen_error.png/mp4]`** 的格式显式标出，提醒用户后期补充。
 3. **画面必须持续有节奏（防静止 / Anti-Deadtime）**：
    - **红线**：同一镜头的画面静止时间**不得超过 15 秒**（30fps 下约 450 帧无任何状态变化）。一大段口播绝不允许只配一个一动不动的静止画面。
    - 凡是一段画面（或一个组件实例）对应的口播时长超过 15 秒，必须把它拆成多个**视觉节拍（visual beat）**，每个节拍≤15 秒，让画面随口播持续推进。详见下方「§1.5 画面节奏与防静止」。
@@ -125,11 +125,11 @@
 1. **画面描述必须使用组件代号**：
    在编写脚本 `@/content-library/<epNN-slug>/04-script/video.md` 中的 `[画面]` 时，必须以以下格式指明调用的组件和具体参数：
    ```markdown
-   - **[画面]** 引入 `@ConceptScene`。参数 eyebrow="三层用法", title="核心认知框架", items=[1. "Editor/编辑模式/🔧 适合5%微调", 2. "Agent/智能体模式/🐴 自动多步执行", 3. "Role/角色模式/🕸️ 约束与规矩"]
+   - **[画面]** 引入 `@ConceptScene`。参数 eyebrow="人 ↔ AI 分工", title="用 Vibe Coding 两步出片", items=[1. "选路线/🧭 AI 摆多条路线、人看坑拍板", 2. "搭引擎/🛠️ AI 填配置、复用现成组件", 3. "兜底/🚧 把坑写成规则固化给 AI"]
    ```
 2. **无法自动渲染的画面必须标注替换提醒**：
    ```markdown
-   - **[画面]** 引入 `@SplitLayout`。左侧 `@VideoSlot(position="fill", src="agent-loop.mp4")` [B轨替换提醒：请用户在此补充 Agent 报错死循环录屏]，右侧 `@VideoSlot(position="fill", src="rule-pass.mp4")` [B轨替换提醒：请用户在此补充加入 Rule 后一次性跑通的录屏]
+   - **[画面]** 引入 `@SplitLayout`。左侧 `@VideoSlot(position="fill", src="ssr-crash.mp4")` [B轨替换提醒：请用户在此补充 Node 打包阶段读 window 报错的录屏]，右侧 `@VideoSlot(position="fill", src="ssr-pass.mp4")` [B轨替换提醒：请用户在此补充加 SSR 守卫规则后一次性渲出片的录屏]
    ```
 
 ---
