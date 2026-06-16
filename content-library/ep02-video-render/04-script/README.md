@@ -287,7 +287,7 @@ upstream_inputs:
       "section_ref": "技术落地①·配置分发",
       "track": "A",
       "scene_template": "@ConceptScene",
-      "voice": "选型定了，第三步技术落地。好消息是，落地也不靠手写，靠跟 AI 一起把配置和组件对上。仓库里这台引擎叫 remotion-composer，干活特别直白：你写一份配置，告诉它这段画面长啥样，主程序 Explainer 就看配置里的 type 字段，自动去找对应组件来渲。type 写 comparison 就出对比卡，terminal_scene 是合成终端、逐行打字、不用真去录屏，screenshot_scene 把截图叠上光标，还有图表、概念图、分屏。这些都是现成通用件，照着填就能用。你要是想再多点辨识度，还能让 AI 在这之上扩一套自己品牌的组件库——不过那是另一个更大的话题，以后单开一期讲。就记一句：引擎认的是 type，你喂对 type 就行。",
+      "voice": "选型定了，进第三步，落地。好消息是，落地也不用你手写，就是跟 AI 一起把\"配置\"和\"组件\"对上。仓库里这台引擎叫 remotion-composer，干活特别直白：你写一份配置，告诉它这段画面长啥样，主程序 Explainer 就看配置里的 type 字段，自动去找对应组件来渲。type 写 comparison 就出对比卡，terminal_scene 是合成终端、逐行打字、不用真去录屏，screenshot_scene 把截图叠上光标，还有图表、概念图、分屏。这些都是现成通用件，照着填就能用。你要是想再多点辨识度，还能让 AI 在这之上扩一套自己品牌的组件库——不过那是另一个更大的话题，以后单开一期讲。就记一句：引擎认的是 type，你喂对 type 就行。",
       "visual_instructions": "@ConceptScene：流向图 配置 → Explainer 按 type 分发 → 组件；type→组件清单 stagger，标注 terminal/screenshot 不用真录屏",
       "duration_hint_seconds": 25,
       "visual_beats": [
