@@ -22,7 +22,7 @@ upstream_inputs:
 - **画幅**：16:9（1920×1080）
 - **帧率**：30fps
 - **A/B 轨比例**：约 30/70（A 轨 Remotion 组件 / B 轨 IDE 与终端录屏）
-- **总时长预估**：约 5 分 50 秒
+- **总时长预估**：约 5 分 20 秒
 - **视觉模式**：`mixed`
 - **反噱头纪律**：标题与正文不以"多少行代码/百倍效率"为卖点；SSR `window` 坑定位为"选这条路要付的税"。
 - **数字主持人纪律**：`VRMAvatar` 仅作陪衬串场，坚决不做对口型数字人、不做 AI 生成的假界面。
@@ -51,7 +51,7 @@ upstream_inputs:
 - **承载必讲要点**：让 AI 摆出多条路线、点明共同内核。
 - **拆分**：先内核（15s）后六路线阵列（35s，sub_shots 逐张入场）。
 
-### 第三段：技术选型——权衡技术局限与边界，回到约束定 Remotion（1:20–3:25，约 125s）
+### 第三段：技术选型——权衡技术局限与边界，回到约束定 Remotion（1:20–3:05，约 105s）
 
 > 对应 `outline_sections[2]`，beat=`comparison`，visual=`chart`
 
@@ -63,7 +63,7 @@ upstream_inputs:
 - **承载必讲要点**：严谨权衡技术局限与边界、对照约束做减法；选型理由→为什么 Remotion；vs 拼装 HTML 方案；代价如实说。
 - **B 轨**：IDE 里和 AI 对话"追问每条技术路线局限性"的录屏（`b-ide-route-pitfalls`）。
 
-### 第四段：技术落地——配置分发 + 配置即内容（3:25–4:35，约 70s）
+### 第四段：技术落地——配置分发 + 配置即内容（3:05–4:15，约 70s）
 
 > 对应 `outline_sections[3]`，beat=`demonstration`，visual=`code`
 
@@ -75,19 +75,18 @@ upstream_inputs:
 - **承载必讲要点**：引擎按 type 分发；组件清单；配置即内容、让 AI 填字段别造组件、类型兜底；自有风格组件库可在现成组件上扩、后续单独一期（一句带过）。
 - **B 轨**：IDE 里"只写一份配置喂给现成组件"的录屏（`b-ide-config-fill`）。
 
-### 第五段：技术落地——数字主持人 + 避坑 + 一行出片（4:35–5:35，约 60s）
+### 第五段：技术落地——数字人选型与落地（4:15–5:03，约 48s）
 
-> 对应 `outline_sections[4]`，beat=`demonstration`，visual=`code`
+> 对应 `outline_sections[4]`，beat=`comparison`，visual=`chart`
 
-- **组件**：`@ScreenshotScene`/取景示意（主持人基础版）→ `@SplitLayout`（SSR 崩 vs 守卫，A 轨 `@TerminalScene` 兜底）→ `@TerminalScene`（出片命令）。
+- **组件**：`@TableScene`（数字人选型矩阵：形象方案 / 适用 / 局限·代价）→ `@ScreenshotScene`（选定 VRM 后的落地取景示意）。
 - **Props**：
-  - 主持人：取景预设 + "脚踩稳"（在大腿上反向抵消髋部摆动）+ 反对口型边界。
-  - SSR 对照：左 `const w = window.innerWidth` 打包阶段 `ReferenceError`、右 `typeof window !== 'undefined'` 守卫 + `.cursor/rules/remotion-ssr.mdc`。
-  - 出片：`npx remotion render`（含模拟渲染进度）。
-- **承载必讲要点**：主持人陪衬定位/脚站稳/不做对口型；顶层读 window 打包崩→MDC 规则一次写死；出片一行命令交给 AI/终端。
-- **B 轨**：SSR 报错→加守卫一次通过录屏（`b-ide-ssr-crash` / `b-ide-ssr-fix`）、终端渲染录屏（`b-term-render`）。
+  - 选型矩阵：真人出镜 / 写实对口型 / 二次元(VRM) 三行，重点高亮选定的 VRM 行；脚注给「对约束拍板」的理由。
+  - 落地取景：取景预设（角落/半身/全身）+ "脚踩稳"（在大腿上反向抵消髋部摆动）+ 反对口型边界。
+- **承载必讲要点**：数字人走同款选型方法论——定位陪衬 → AI 列真人/写实/二次元三种形象的适用与坑 → 对约束选定 VRM 3D 角色、定死不做对口型 → AI 落地（取景预设、脚站稳）。
+- **B 轨**：无（本段为 A 轨概念矩阵 + 取景示意，无需录屏）。
 
-### 第六段：结尾 CTA（5:35–5:50，15s）
+### 第六段：结尾 CTA（5:03–5:18，15s）
 
 > 对应 `outline_sections[5]`，beat=`conclusion`，visual=`text`
 
@@ -341,77 +340,57 @@ upstream_inputs:
       ]
     },
     {
-      "section_ref": "技术落地②·数字主持人基础版",
+      "section_ref": "技术落地②·数字人选型",
+      "scene_template": "@TableScene",
+      "props": {
+        "title": "数字人选型：定位陪衬，让 AI 列形象与坑",
+        "columns": ["形象方案", "适用场景", "局限与代价"],
+        "rows": [
+          ["真人出镜（自己 / 找人）", "最可信、有温度", "要露脸出镜、不可编程批量复用、隐私成本"],
+          ["写实数字人 / 对口型", "接近真人主播", "易掉进恐怖谷、可信度反而崩；口型/表情是重活"],
+          ["二次元 / 3D 风格化角色（VRM）", "风格统一、可编程、渲一次到处用、不踩恐怖谷", "需建模与动作绑定，但可交给 AI / 现成方案"]
+        ],
+        "highlight_row": 2,
+        "footnote": "对约束（不露脸 / 可编程批量复用 / 避恐怖谷）拍板：选 3D 风格化角色 VRMAvatar，定死陪衬、不做对口型。"
+      },
+      "duration_seconds": 30,
+      "animation_cues": [
+        {"frame": 0, "action": "fade_in(title+header_row)"},
+        {"frame": 150, "action": "stagger_rows_in(rows, 每行约 120f)"},
+        {"frame": 540, "action": "highlight_row(VRM, annotation=对约束选定)"},
+        {"frame": 780, "action": "fade_in(footnote: 拍板理由)"}
+      ],
+      "sub_shots": [
+        {"start_seconds": 0, "action": "表头入场"},
+        {"start_seconds": 5, "action": "真人/写实/二次元三行 stagger 入场"},
+        {"start_seconds": 18, "action": "高亮 VRM 行：对约束选定"},
+        {"start_seconds": 26, "action": "拍板理由脚注淡入"}
+      ]
+    },
+    {
+      "section_ref": "技术落地②·数字人落地取景",
       "scene_template": "@ScreenshotScene",
       "props": {
-        "title": "给视频配个 3D 主持人（基础版）：站得稳就行",
-        "image": "[A轨占位：VRMAvatar 取景预设截图—半身/全身景别]",
+        "title": "AI 落地：渲一次按场景取景，站得稳",
+        "image": "[A轨占位：VRMAvatar 取景预设截图—角落/半身/全身景别]",
         "callouts": [
-          "渲染一次、按场景裁出半身/全身等景别",
+          "渲染一次、按场景裁出角落/半身/全身等景别（取景预设，verified）",
           "站得稳：在大腿上反向抵消髋部摆动，让脚踩在原地（verified：本期已修，见 PR『plant VRM feet』）",
-          "划清边界：只做陪衬串场，坚决不做对口型数字人 / AI 假界面"
+          "划清边界：只做陪衬串场，坚决不做对口型数字人 / AI 假界面，可信度靠真实录屏"
         ]
       },
-      "duration_seconds": 22,
+      "duration_seconds": 18,
       "animation_cues": [
         {"frame": 0, "action": "fade_in(avatar_screenshot)"},
-        {"frame": 150, "action": "callout(取景预设, 半身/全身)"},
-        {"frame": 360, "action": "callout(脚踩稳, before/after 对比)"},
-        {"frame": 540, "action": "callout(反对口型边界)"}
+        {"frame": 150, "action": "callout(取景预设, 角落/半身/全身)"},
+        {"frame": 330, "action": "callout(脚踩稳, before/after 对比)"},
+        {"frame": 480, "action": "callout(反对口型边界)"}
       ],
       "sub_shots": [
         {"start_seconds": 0, "action": "主持人取景截图入场"},
         {"start_seconds": 5, "action": "取景预设标注"},
-        {"start_seconds": 12, "action": "脚踩稳修复前后对比"},
-        {"start_seconds": 18, "action": "反对口型边界标注"}
-      ]
-    },
-    {
-      "section_ref": "技术落地②·SSR 避坑",
-      "scene_template": "@SplitLayout",
-      "props": {
-        "direction": "horizontal",
-        "ratio": 0.5,
-        "left": {"label": "❌ 顶层读 window 打包阶段崩", "component": "@VideoSlot", "src": "[B轨占位：IDE 录屏—window.innerWidth 触发 ReferenceError]", "fallback_a_track": {"component": "@TerminalScene", "language": "tsx", "code": "// ❌ Node 端无 DOM\nconst w = window.innerWidth;\n// ReferenceError: window is not defined"}},
-        "right": {"label": "✅ typeof 守卫 + MDC 规则封死", "component": "@VideoSlot", "src": "[B轨占位：IDE 录屏—加守卫后一次性通过]", "fallback_a_track": {"component": "@TerminalScene", "language": "tsx", "code": "// ✅ typeof 守卫\nconst getWidth = () =>\n  typeof window !== 'undefined'\n    ? window.innerWidth : 1920;\n// + .cursor/rules/remotion-ssr.mdc 一次写死交给 AI"}}
-      },
-      "duration_seconds": 35,
-      "animation_cues": [
-        {"frame": 0, "action": "wipe_reveal(split_layout)"},
-        {"frame": 180, "action": "fade_in(left_video)"},
-        {"frame": 360, "action": "shake(left, intensity=3px, on=ReferenceError)"},
-        {"frame": 600, "action": "fade_in(right_video)"},
-        {"frame": 870, "action": "highlight(right, badge=一次通过)"}
-      ],
-      "sub_shots": [
-        {"start_seconds": 0, "action": "分屏入场"},
-        {"start_seconds": 6, "action": "左侧崩溃录屏淡入"},
-        {"start_seconds": 12, "action": "左侧震动强调报错"},
-        {"start_seconds": 20, "action": "右侧守卫+MDC 录屏淡入"},
-        {"start_seconds": 29, "action": "右侧一次通过标记"}
-      ]
-    },
-    {
-      "section_ref": "技术落地②·一行出片",
-      "scene_template": "@TerminalScene",
-      "props": {
-        "title": "出片就是一行命令，交给 AI / 终端跑",
-        "language": "bash",
-        "code": "cd OpenMontage/remotion-composer\nnpx remotion studio                  # 可视化调试\nnpx remotion render src/index.ts \\\n  <CompositionId> out/ep02.mp4\n\n# ℹ Rendering frames 0-1750...\n# ℹ 100% ██████████ 1750/1750\n# ✓ Video saved to out/ep02.mp4",
-        "fallback_note": "B 轨终端录屏缺失时直接用本 @TerminalScene 渲染（含模拟进度）；<CompositionId> 录制前让 AI 跑一次 studio 核对（paper_spec）"
-      },
-      "duration_seconds": 25,
-      "animation_cues": [
-        {"frame": 0, "action": "typewriter(code)"},
-        {"frame": 360, "action": "fade_in(b_track_terminal)"},
-        {"frame": 540, "action": "progress_bar(render_progress, 0→100%)"},
-        {"frame": 690, "action": "check(Video saved)"}
-      ],
-      "sub_shots": [
-        {"start_seconds": 0, "action": "命令逐行打字"},
-        {"start_seconds": 12, "action": "B 轨终端录屏淡入"},
-        {"start_seconds": 18, "action": "渲染进度动画"},
-        {"start_seconds": 23, "action": "出片完成勾选"}
+        {"start_seconds": 11, "action": "脚踩稳修复前后对比"},
+        {"start_seconds": 16, "action": "反对口型边界标注"}
       ]
     },
     {
@@ -451,27 +430,6 @@ upstream_inputs:
       "timestamp_end": "0:25",
       "zoom_level": 1.4,
       "focal_point": {"x": 0.45, "y": 0.4}
-    },
-    {
-      "clip_id": "b-ide-ssr-crash",
-      "timestamp_start": "0:00",
-      "timestamp_end": "0:12",
-      "zoom_level": 1.5,
-      "focal_point": {"x": 0.5, "y": 0.3}
-    },
-    {
-      "clip_id": "b-ide-ssr-fix",
-      "timestamp_start": "0:00",
-      "timestamp_end": "0:15",
-      "zoom_level": 1.4,
-      "focal_point": {"x": 0.5, "y": 0.35}
-    },
-    {
-      "clip_id": "b-term-render",
-      "timestamp_start": "0:00",
-      "timestamp_end": "0:12",
-      "zoom_level": 1.2,
-      "focal_point": {"x": 0.5, "y": 0.6}
     }
   ],
   "template_tickets": []
