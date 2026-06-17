@@ -73,7 +73,7 @@ upstream_inputs:
   - 右 `@ComparisonCard`：`title`="❌ 拼装 HTML 方案"，`points`=["维护成本高：无工程化复用，每期需单独拼接","结构易跑偏：无强类型约束，AI 发挥空间过大","难以长期维护：超过十期视频后维护将成为灾难"]，`status`="error"。
   - 下方代价条：`text`="局限与代价：React 栈，采用 BUSL 商业授权（规模化商用要付费）"。
   - **[子镜头时间线]**：0s 分屏 center-out 展开 → 5s 左侧三条 stagger入场 → 13s 右侧三条 stagger 入场 → 20s 底部代价条浮出 → 23s 左侧微放大（胜出方 1.03x）。
-- **[口播]** 有人觉得直接拿 HTML 拼更省事，比一比就清楚差在哪。复用上，Remotion 改一个组件全系列同步，手写拼接只能每期复制粘贴、越改越乱；配合 AI 上，Remotion 用 TypeScript 把字段类型管死，AI 只能老实填空，裸 HTML 一撒欢结构就跑偏；维护上，做到第十期，Remotion 还能轻松扩，手写拼接就是灾难。代价也如实说：得吃 React 这套栈，还得认 BUSL 授权、规模化付费。但前端本来就让 AI 写、我把方向，正好把 Vibe Coding 的长处吃满。一句话：宁可前期立规矩，别等后期擦屁股。
+- **[口播]** 有人觉得直接让 AI 拿 HTML 拼更省事，比一比就清楚差在哪——注意，两条路都是 AI 写代码，差的是工程化。复用上，Remotion 组件和数据分开，改一处全系列同步；裸 HTML 没有复用，AI 每期都得从头拼，改着改着就乱。约束上，Remotion 用 TypeScript 把字段类型管死，AI 只能老实填空；裸 HTML 没有强类型兜底，AI 一撒欢结构就跑偏。维护上，到第十期，Remotion 还能轻松扩，裸 HTML 早成了一团乱麻。代价也如实说：得吃 React 这套栈，还得认 BUSL 授权、规模化付费。但前端本来就让 AI 写、我把方向，正好把 Vibe Coding 的长处吃满。一句话：宁可前期立规矩，别等后期擦屁股。
 
 ---
 
@@ -272,7 +272,7 @@ upstream_inputs:
       "section_ref": "技术选型·Remotion vs 拼装 HTML 方案",
       "track": "A",
       "scene_template": "@SplitLayout",
-      "voice": "有人觉得直接拿 HTML 拼更省事，比一比就清楚差在哪。复用上，Remotion 改一个组件全系列同步，手写拼接只能每期复制粘贴、越改越乱；配合 AI 上，Remotion 用 TypeScript 把字段类型管死，AI 只能老实填空，裸 HTML 一撒欢结构就跑偏；维护上，做到第十期，Remotion 还能轻松扩，手写拼接就是灾难。代价也如实说：得吃 React 这套栈，还得认 BUSL 授权、规模化付费。但前端本来就让 AI 写、我把方向，正好把 Vibe Coding 的长处吃满。一句话：宁可前期立规矩，别等后期擦屁股。",
+      "voice": "有人觉得直接让 AI 拿 HTML 拼更省事，比一比就清楚差在哪——注意，两条路都是 AI 写代码，差的是工程化。复用上，Remotion 组件和数据分开，改一处全系列同步；裸 HTML 没有复用，AI 每期都得从头拼，改着改着就乱。约束上，Remotion 用 TypeScript 把字段类型管死，AI 只能老实填空；裸 HTML 没有强类型兜底，AI 一撒欢结构就跑偏。维护上，到第十期，Remotion 还能轻松扩，裸 HTML 早成了一团乱麻。代价也如实说：得吃 React 这套栈，还得认 BUSL 授权、规模化付费。但前端本来就让 AI 写、我把方向，正好把 Vibe Coding 的长处吃满。一句话：宁可前期立规矩，别等后期擦屁股。",
       "visual_instructions": "@SplitLayout(@ComparisonCard 左✅Remotion / 右❌拼装 HTML，各三条) + 底部代价条（React/BUSL）",
       "duration_hint_seconds": 25,
       "visual_beats": [
