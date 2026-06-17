@@ -10,12 +10,12 @@ upstream_inputs:
   - shared/docs/remotion-spec.md
 ---
 
-> ⚠️ **重做版（对齐三段主线）**：本脚本已按 `tutorial.final.md` 的「教人用 Vibe Coding」三段主线重写——开场 → 找技术路径 → 技术选型 → 技术落地 → 总结，并逐段对齐 `03-plan-bilibili/README.md` 的 13 个 scene_storyboard。旧的「两步/选路线·搭引擎」框架已弃用（流程即代码/角色编排归 EP05/EP06）。上游 `tutorial.final.md` 当前为 `draft`，本稿随其一同待人工复核后再置 `approved`。
+> ⚠️ **重做版（对齐三段主线）**：本脚本已按 `tutorial.final.md` 的「教人用 Vibe Coding」三段主线重写——开场 → 找技术路径 → 技术选型 → 技术落地 → 总结，并逐段对齐 `03-plan-bilibili/README.md` 的 12 个 scene_storyboard。旧的「两步/选路线·搭引擎」框架已弃用（流程即代码/角色编排归 EP05/EP06）。上游 `tutorial.final.md` 当前为 `draft`，本稿随其一同待人工复核后再置 `approved`。
 
 # ep02 视频脚本：《用 Vibe Coding 搭一套能自动出片的视频渲染引擎》
 
-**总时长预估**：约 5 分 52 秒（352s）
-**口播字数预估**：约 2100 字
+**总时长预估**：约 5 分 18 秒（318s）
+**口播字数预估**：约 1750 字
 **主线**：站在"没有前后端基础、用大白话指挥 AI（Vibe Coding）"的视角，讲三步——① 找技术路径（让 AI 罗列现成路线）；② 技术选型（对约束选定 Remotion）；③ 技术落地（驱动 Remotion 按配置出片）。
 **反噱头纪律**：不以"多少行代码/百倍效率/一键生成"为卖点；SSR `window` 坑定位为"选这条路要付的税"。
 
@@ -104,51 +104,39 @@ upstream_inputs:
 
 ---
 
-## 第十段：【@ScreenshotScene】技术落地②·数字主持人（基础版）（4:15–4:37，22s）
+## 第十段：【@TableScene】技术落地②·数字人选型（定位陪衬，让 AI 列形象与坑）（4:15–4:45，30s）
 
-- **[画面]** 调用 `@ScreenshotScene`（VRMAvatar 取景预设示意 + 三处 callout）。参数 `title`="数字主持人 VRMAvatar：只做陪衬串场"，`callouts`=[{at:"取景", text:"整体渲一次，按场景裁半身/全身"}, {at:"脚踩稳", text:"在大腿上把髋部摆动反向抵消，脚踩原地"}, {at:"边界", text:"坚决不做对口型数字人、不做 AI 假界面"}]。
-  - **[子镜头时间线]**：0s 主持人截图淡入 → 4s callout"取景预设"浮出 → 10s callout"脚踩稳（髋部反向抵消）"浮出 → 16s callout"反对口型边界"浮出。
-- **[口播]** 引擎里还有个 3D 主持人 VRMAvatar，定位先说死：陪衬串场，不是主角。整体渲一次，再按场景裁半身、全身，不用每段重搭。之前它待机只摆髋部，整条腿像钟摆一样来回甩；修法是在大腿上把髋部那点摆动反向抵消，脚就踩住原地了。还有条铁规矩——坚决不做对口型数字人、不整 AI 假界面。可信度只能拿真实录屏换。
-
----
-
-## 第十一段：【@SplitLayout + B 轨】技术落地②·SSR 避坑，把规则写死交给 AI（4:37–5:12，35s）
-
-- **[B 轨]** `@VideoSlot`：`[B 轨占位替换提醒：请用户补充 IDE 录屏 — 左：顶层读 window 触发 ReferenceError 红屏（clip_id=b-ide-ssr-crash）；右：加 typeof window 守卫 + 写入 .cursor/rules/remotion-ssr.mdc 后一次性渲出（clip_id=b-ide-ssr-fix）]`。
-- **[A 轨兜底]**（B 轨缺失时使用）调用 `@SplitLayout`：
-  - 左 `@TerminalScene`：`title`="❌ 打包阶段就崩"，`language`="tsx"，`code`=`// Remotion 打包跑在 Node 里，没有 window\nconst w = window.innerWidth;  // 💥\n// ReferenceError: window is not defined`。
-  - 右 `@TerminalScene`：`title`="✅ 守卫 + 规则一次写死"，`language`="tsx"，`code`=`const getWidth = () =>\n  typeof window !== 'undefined' ? window.innerWidth : 1920;\n\n// .cursor/rules/remotion-ssr.mdc（globs: remotion-composer/src/**）\n// "组件顶层不得直接读 window/document"`。
-  - **[子镜头时间线]**（口播 >15s，必填）：0s 分屏入场 → 4s 左侧崩溃代码/录屏淡入 → 12s 左侧震动强调 ReferenceError（3px shake）→ 20s 右侧 typeof 守卫代码/录屏淡入 → 28s 浮出 `.cursor/rules/remotion-ssr.mdc` → 32s 右侧 badge="一次通过"。
-- **[口播]** 落地里唯一让我反复栽的，就是 SSR 这个坑。看左边：组件最外层直接读了 window。可 Remotion 打包时跑在 Node 里、浏览器都没进，根本没有 window，当场甩你一个 ReferenceError、渲染红屏。这就像人还没进屋就伸手去摸墙上开灯——灯还没装，当然摸空。右边怎么修：加一句 typeof window 判断，是浏览器才读，不是就给默认值。但更聪明的不是每次盯着 AI 提醒，而是把这条规矩一次写死——塞进 .cursor/rules 一个 mdc 文件、指到引擎源码目录，往后 AI 生成组件自动带上判断，不用你盯。这就是 Vibe Coding 的精髓：重复的规矩固化成规则交给 AI，别拿嘴一遍遍念。
+- **[画面]** 调用 `@TableScene`（数字人选型矩阵）。参数 `title`="数字人选型：定位陪衬，让 AI 列形象与坑"，`columns`=["形象方案", "适用场景", "局限与代价"]，三行=真人出镜 / 写实对口型 / 二次元(VRM)，`highlight_row`=2（高亮选定的 VRM 行）。
+  - **[子镜头时间线]**：0s 表头淡入 → 5s 真人/写实/二次元三行依次 stagger 入场 → 18s 高亮 VRM 行"对约束选定" → 26s 浮出拍板理由脚注（不露脸/可编程复用/避恐怖谷）。
+- **[口播]** 还要不要个出镜形象串场？这事也走选型那套——先定死位置：数字人只做陪衬，不是主角。再让 AI 把可选形象连坑一起摆出来：真人出镜最可信，但得露脸、没法编程复用；写实对口型容易掉进恐怖谷、可信度反而崩；二次元 3D 角色风格统一、可编程、渲一次到处用，还不踩恐怖谷。对着我的约束挑——不露脸、要批量复用、避恐怖谷，就选 3D 角色 VRMAvatar，定死陪衬、坚决不做对口型。记一句：形象也让 AI 列，你按约束拍板。
 
 ---
 
-## 第十二段：【@TerminalScene + B 轨】技术落地②·一行命令出片（5:12–5:37，25s）
+## 第十一段：【@ScreenshotScene】技术落地②·数字人落地取景（4:45–5:03，18s）
 
-- **[B 轨]** `@VideoSlot`：`[B 轨占位替换提醒：可选 — 终端真实录屏 npx remotion render 执行并输出 MP4（clip_id=b-term-render）；有 A 轨兜底]`。
-- **[A 轨兜底]**（B 轨缺失时使用）调用 `@TerminalScene`。参数 `title`="npx remotion render 出片"，`language`="bash"，`code`=`cd OpenMontage/remotion-composer\nnpx remotion studio                       # 可视化调试\nnpx remotion render src/index.ts \\\n  <CompositionId> out/ep02.mp4            # 渲染出片`。
-  - **[子镜头时间线]**：0s 终端标题入场 → 4s 命令逐行打字 → 12s B 轨渲染录屏切入（或 A 轨模拟进度）→ 18s 进度条 0→100% 动画 → 23s 输出"✓ out/ep02.mp4"提示。
-- **[口播]** 最后出片。这步不用写代码、也不用背命令，让 AI 在终端替你敲：cd 进 remotion-composer，npx remotion studio 拉起可视化调试，npx remotion render 直接出片。全程纯命令行，往后接自动化、上云都顺。那个 Composition 注册名叫啥，录之前让 AI 跑一遍 studio 核对就稳了。一句话：能交给命令行的，就别动手。
+- **[画面]** 调用 `@ScreenshotScene`（VRMAvatar 取景预设示意 + 三处 callout）。参数 `title`="AI 落地：渲一次按场景取景，站得稳"，`callouts`=[{at:"取景", text:"整体渲一次，按场景裁角落/半身/全身"}, {at:"脚踩稳", text:"在大腿上把髋部摆动反向抵消，脚踩原地"}, {at:"边界", text:"坚决不做对口型数字人、不做 AI 假界面"}]。
+  - **[子镜头时间线]**：0s 主持人截图淡入 → 5s callout"取景预设（角落/半身/全身）"浮出 → 11s callout"脚踩稳（髋部反向抵消）"浮出 → 16s callout"反对口型边界"浮出。
+- **[口播]** 选定之后交给 AI 落地。整体渲一次，再按场景裁角落、半身、全身，不用每段重搭。之前待机只摆髋部，整条腿像钟摆一样甩；在大腿上把那点摆动反向抵消，脚就踩稳了。可信度始终靠真实录屏，不整 AI 假界面。
 
 ---
 
-## 第十三段：【@OutroScene】结尾 CTA（5:37–5:52，15s）
+## 第十二段：【@OutroScene】结尾 CTA（5:03–5:18，15s）
 
 - **[画面]** 调用 `@OutroScene`。参数 `headline`="整期三步：找技术路径 + 技术选型 + 技术落地"，`cta`="关注 · 下期 EP03 字幕匹配：Whisper 让字幕踩着话音跳"，`background`="gradient"。
   - **[子镜头时间线]**：0s 总结三步淡入 → 5s "没基础也能复制"落点强调 → 9s CTA 下期 EP03 打字机逐字显现 → 12s 关注脉冲（绿色）。
-- **[口播]** 回头看就三步：找路，让 AI 把现成路线全摆出来；选型，让 AI 列坑、你对着约束拍板；落地，填配置、套组件、规则兜底、AI 跑渲染。真正要练的从来不是写代码，而是把需求讲清楚、把坑看住、把规则固化给 AI——没基础也能照着抄。下期 EP03，用 Whisper 让字幕踩着话音、一个字一个字往外蹦。关注一下，别错过。
+- **[口播]** 回头看就三步：找路，让 AI 把现成路线全摆出来；选型，让 AI 列坑、你对着约束拍板；落地，填配置、套现成组件、配个陪衬数字人，AI 自动出片。真正要练的从来不是写代码，而是把需求讲清楚、把坑看住、把活交给 AI——没基础也能照着抄。下期 EP03，用 Whisper 让字幕踩着话音、一个字一个字往外蹦。关注一下，别错过。
 
 ---
 
 ## 6. 自我检查清单
 
-- ✅ B 站深度版完整产出（13 段，对齐 03 蓝图 13 个 scene_storyboard，约 2100 字、约 5 分 52 秒）
+- ✅ B 站深度版完整产出（12 段，对齐 03 蓝图 12 个 scene_storyboard，约 1750 字、约 5 分 18 秒）
 - ✅ **主线＝教人用 Vibe Coding**：开场结果先行 + 人设；每个技术段体现"人讲需求/看坑/定规则 + AI 写和填"；结尾落点"没基础也能复制"
 - ✅ **去抽象腔**：全文未用"范式/换一套心智模型/帧即状态"等抽象标签，一律大白话
 - ✅ **单期范围纪律**：流程即代码/角色（EP05/06）、字幕（EP03）、音频均未展开，仅结尾一句预告
-- ✅ **必讲要点覆盖核对**：逐条对齐 `tutorial.final.md` 末尾清单，18/18 全覆盖（详见下方）
+- ✅ **必讲要点覆盖核对**：逐条对齐 `tutorial.final.md` 末尾清单，16/16 全覆盖（详见下方）
 - ✅ 所有组件均为 `remotion-spec.md` 已有组件，无新组件工单（呼应"配置即内容、不造组件"）
-- ✅ **A/B 轨兜底完整性**：S4/S9/S11/S12 含 B 轨 `@VideoSlot` 录屏指示 + A 轨 `@TableScene`/`@SplitLayout`/`@TerminalScene` 兜底
+- ✅ **A/B 轨兜底完整性**：S4/S9 含 B 轨 `@VideoSlot` 录屏指示 + A 轨 `@TableScene`/`@SplitLayout` 兜底
 - ✅ 恶俗 AI 词汇检查：无"赋能、打造、革新、全方位、数字化浪潮"
 - ✅ **防静止**：所有 >15s 段落均配 [子镜头时间线]，无静止画面超 15s
 
@@ -169,11 +157,9 @@ upstream_inputs:
 | 11 | 组件清单：comparison/terminal_scene/screenshot_scene/charts/ConceptScene·SplitLayout | 第七段 | ✅ |
 | 12 | 自有风格组件库：可在现成组件上扩品牌化模板，后续单独一期（一句带过） | 第七段 | ✅ |
 | 13 | 配置即内容：让 AI 填字段别造组件、TS 类型兜底 | 第八、九段 | ✅ |
-| 14 | 数字主持人（基础版）：陪衬/脚站稳/坚决不做对口型 | 第十段 | ✅ |
-| 15 | 避坑：顶层读 window 打包阶段崩 → `.cursor/rules` 一次写死 | 第十一段 | ✅ |
-| 16 | 出片就是一行 `npx remotion render`，交给 AI/终端跑 | 第十二段 | ✅ |
-| 17 | 三步法回顾 + "没编程基础也能复制" | 第十三段 | ✅ |
-| 18 | 关注引导 + 下期预告（EP03 字幕匹配：Whisper 驱动 CaptionOverlay） | 第十三段 | ✅ |
+| 14 | 数字人选型与落地：定位陪衬 → 让 AI 列真人/写实/二次元(VRM) 形象与坑 → 对约束选定 VRM 3D 角色、不做对口型 → AI 落地（取景预设/脚站稳） | 第十、十一段 | ✅ |
+| 15 | 三步法回顾 + "没编程基础也能复制" | 第十二段 | ✅ |
+| 16 | 关注引导 + 下期预告（EP03 字幕匹配：Whisper 驱动 CaptionOverlay） | 第十二段 | ✅ |
 
 ---
 
@@ -184,8 +170,8 @@ upstream_inputs:
 {
   "title": "用 Vibe Coding 搭一套能自动出片的视频渲染引擎",
   "platform": "bilibili",
-  "estimated_duration_seconds": 352,
-  "total_word_count": 2100,
+  "estimated_duration_seconds": 318,
+  "total_word_count": 1750,
   "anti_hype_forbidden": ["多少行代码", "百倍", "千倍", "一键生成"],
   "sections": [
     {
@@ -333,62 +319,40 @@ upstream_inputs:
     },
     {
       "id": "10",
-      "section_ref": "技术落地②·数字主持人基础版",
+      "section_ref": "技术落地②·数字人选型",
       "track": "A",
-      "scene_template": "@ScreenshotScene",
-      "voice": "引擎里还有个 3D 主持人 VRMAvatar，定位先说死：陪衬串场，不是主角。整体渲一次，再按场景裁半身、全身，不用每段重搭。之前它待机只摆髋部，整条腿像钟摆一样来回甩；修法是在大腿上把髋部那点摆动反向抵消，脚就踩住原地了。还有条铁规矩——坚决不做对口型数字人、不整 AI 假界面。可信度只能拿真实录屏换。",
-      "visual_instructions": "@ScreenshotScene：VRMAvatar 取景预设 + 三处 callout（取景/脚踩稳·髋部反向抵消/反对口型边界）",
-      "duration_hint_seconds": 22,
+      "scene_template": "@TableScene",
+      "voice": "还要不要个出镜形象串场？这事也走选型那套——先定死位置：数字人只做陪衬，不是主角。再让 AI 把可选形象连坑一起摆出来：真人出镜最可信，但得露脸、没法编程复用；写实对口型容易掉进恐怖谷、可信度反而崩；二次元 3D 角色风格统一、可编程、渲一次到处用，还不踩恐怖谷。对着我的约束挑——不露脸、要批量复用、避恐怖谷，就选 3D 角色 VRMAvatar，定死陪衬、坚决不做对口型。记一句：形象也让 AI 列，你按约束拍板。",
+      "visual_instructions": "@TableScene：数字人选型矩阵（形象方案/适用场景/局限与代价），三行=真人出镜/写实对口型/二次元(VRM)，highlight_row=2，脚注=对约束选定 VRMAvatar、定死陪衬不做对口型",
+      "duration_hint_seconds": 30,
       "visual_beats": [
-        {"at_seconds": 0, "action": "主持人截图淡入"},
-        {"at_seconds": 4, "action": "callout '取景预设' 浮出"},
-        {"at_seconds": 10, "action": "callout '脚踩稳（髋部反向抵消）' 浮出"},
-        {"at_seconds": 16, "action": "callout '反对口型边界' 浮出"}
+        {"at_seconds": 0, "action": "表头淡入"},
+        {"at_seconds": 5, "action": "真人/写实/二次元三行依次 stagger 入场"},
+        {"at_seconds": 18, "action": "高亮 VRM 行'对约束选定'"},
+        {"at_seconds": 26, "action": "浮出拍板理由脚注（不露脸/可编程复用/避恐怖谷）"}
       ]
     },
     {
       "id": "11",
-      "section_ref": "技术落地②·SSR 避坑",
-      "track": "A+B",
-      "scene_template": "@SplitLayout",
-      "voice": "落地里唯一让我反复栽的，就是 SSR 这个坑。看左边：组件最外层直接读了 window。可 Remotion 打包时跑在 Node 里、浏览器都没进，根本没有 window，当场甩你一个 ReferenceError、渲染红屏。这就像人还没进屋就伸手去摸墙上开灯——灯还没装，当然摸空。右边怎么修：加一句 typeof window 判断，是浏览器才读，不是就给默认值。但更聪明的不是每次盯着 AI 提醒，而是把这条规矩一次写死——塞进 .cursor/rules 一个 mdc 文件、指到引擎源码目录，往后 AI 生成组件自动带上判断，不用你盯。这就是 Vibe Coding 的精髓：重复的规矩固化成规则交给 AI，别拿嘴一遍遍念。",
-      "visual_instructions": "B 轨：window 崩溃→守卫修复 IDE 录屏（b-ide-ssr-crash/b-ide-ssr-fix）；A 轨兜底：@SplitLayout 左 ReferenceError 代码 / 右 typeof 守卫 + .cursor/rules/remotion-ssr.mdc",
-      "duration_hint_seconds": 35,
-      "b_track_required": true,
-      "b_track_notes": "IDE 录屏：SSR window 崩溃 → typeof 守卫 → 写入 .cursor/rules/remotion-ssr.mdc 一次通过",
+      "section_ref": "技术落地②·数字人落地取景",
+      "track": "A",
+      "scene_template": "@ScreenshotScene",
+      "voice": "选定之后交给 AI 落地。整体渲一次，再按场景裁角落、半身、全身，不用每段重搭。之前待机只摆髋部，整条腿像钟摆一样甩；在大腿上把那点摆动反向抵消，脚就踩稳了。可信度始终靠真实录屏，不整 AI 假界面。",
+      "visual_instructions": "@ScreenshotScene：VRMAvatar 取景预设 + 三处 callout（取景·角落/半身/全身 · 脚踩稳·髋部反向抵消 · 反对口型边界）",
+      "duration_hint_seconds": 18,
       "visual_beats": [
-        {"at_seconds": 0, "action": "分屏入场"},
-        {"at_seconds": 4, "action": "左侧崩溃代码/录屏淡入"},
-        {"at_seconds": 12, "action": "左侧震动强调 ReferenceError"},
-        {"at_seconds": 20, "action": "右侧 typeof 守卫代码/录屏淡入"},
-        {"at_seconds": 28, "action": "浮出 .cursor/rules/remotion-ssr.mdc"},
-        {"at_seconds": 32, "action": "右侧 badge='一次通过'"}
+        {"at_seconds": 0, "action": "主持人截图淡入"},
+        {"at_seconds": 5, "action": "callout '取景预设（角落/半身/全身）' 浮出"},
+        {"at_seconds": 11, "action": "callout '脚踩稳（髋部反向抵消）' 浮出"},
+        {"at_seconds": 16, "action": "callout '反对口型边界' 浮出"}
       ]
     },
     {
       "id": "12",
-      "section_ref": "技术落地②·一行出片",
-      "track": "A+B",
-      "scene_template": "@TerminalScene",
-      "voice": "最后出片。这步不用写代码、也不用背命令，让 AI 在终端替你敲：cd 进 remotion-composer，npx remotion studio 拉起可视化调试，npx remotion render 直接出片。全程纯命令行，往后接自动化、上云都顺。那个 Composition 注册名叫啥，录之前让 AI 跑一遍 studio 核对就稳了。一句话：能交给命令行的，就别动手。",
-      "visual_instructions": "B 轨：终端真实录屏 npx remotion render（b-term-render，可选）；A 轨兜底：@TerminalScene render 命令 + 模拟进度条",
-      "duration_hint_seconds": 25,
-      "b_track_required": false,
-      "b_track_notes": "可选：终端真实录屏 npx remotion render 执行出片",
-      "visual_beats": [
-        {"at_seconds": 0, "action": "终端标题入场"},
-        {"at_seconds": 4, "action": "命令逐行打字"},
-        {"at_seconds": 12, "action": "B 轨渲染录屏切入或 A 轨模拟进度"},
-        {"at_seconds": 18, "action": "进度条 0→100% 动画"},
-        {"at_seconds": 23, "action": "输出 '✓ out/ep02.mp4' 提示"}
-      ]
-    },
-    {
-      "id": "13",
       "section_ref": "结尾 CTA",
       "track": "A",
       "scene_template": "@OutroScene",
-      "voice": "回头看就三步：找路，让 AI 把现成路线全摆出来；选型，让 AI 列坑、你对着约束拍板；落地，填配置、套组件、规则兜底、AI 跑渲染。真正要练的从来不是写代码，而是把需求讲清楚、把坑看住、把规则固化给 AI——没基础也能照着抄。下期 EP03，用 Whisper 让字幕踩着话音、一个字一个字往外蹦。关注一下，别错过。",
+      "voice": "回头看就三步：找路，让 AI 把现成路线全摆出来；选型，让 AI 列坑、你对着约束拍板；落地，填配置、套现成组件、配个陪衬数字人，AI 自动出片。真正要练的从来不是写代码，而是把需求讲清楚、把坑看住、把活交给 AI——没基础也能照着抄。下期 EP03，用 Whisper 让字幕踩着话音、一个字一个字往外蹦。关注一下，别错过。",
       "visual_instructions": "@OutroScene：三步法总结 + '没基础也能复制' + CTA 下期 EP03 字幕匹配，打字机 + 脉冲",
       "duration_hint_seconds": 15,
       "visual_beats": [
@@ -421,32 +385,11 @@ upstream_inputs:
         {"timestamp_start": "0:00", "timestamp_end": "0:15", "zoom_level": 1.0, "description": "全貌：打开配置文件，准备填字段"},
         {"timestamp_start": "0:15", "timestamp_end": "0:25", "zoom_level": 1.4, "description": "聚焦：comparison 的 left/right 字段 + TS 报错提示"}
       ]
-    },
-    {
-      "clip_id": "b-ide-ssr-crash",
-      "description": "IDE 录屏：组件顶层读 window 触发 ReferenceError，渲染红屏",
-      "zoom_crop_directives": [
-        {"timestamp_start": "0:00", "timestamp_end": "0:12", "zoom_level": 1.5, "description": "聚焦终端：ReferenceError: window is not defined"}
-      ]
-    },
-    {
-      "clip_id": "b-ide-ssr-fix",
-      "description": "IDE 录屏：加 typeof window 守卫 + 写入 .cursor/rules/remotion-ssr.mdc 后一次性渲出",
-      "zoom_crop_directives": [
-        {"timestamp_start": "0:00", "timestamp_end": "0:15", "zoom_level": 1.4, "description": "聚焦代码：typeof window 守卫 + mdc 规则文件"}
-      ]
-    },
-    {
-      "clip_id": "b-term-render",
-      "description": "终端录屏：npx remotion render 执行并输出 MP4（可选，有 A 轨兜底）",
-      "zoom_crop_directives": [
-        {"timestamp_start": "0:00", "timestamp_end": "0:12", "zoom_level": 1.2, "description": "聚焦渲染进度条和帧计数"}
-      ]
     }
   ],
   "coverage_checklist": {
-    "total": 18,
-    "covered": 18,
+    "total": 16,
+    "covered": 16,
     "items": [
       {"id": 1, "point": "一句话点题：本期用 Vibe Coding 解决视频自动渲染", "section": "1"},
       {"id": 2, "point": "关键认知钩子：AI 最强处理文本/代码 → 渲染用文本/代码/数据驱动", "section": "1"},
@@ -461,11 +404,9 @@ upstream_inputs:
       {"id": 11, "point": "组件清单", "section": "7"},
       {"id": 12, "point": "自有风格组件库：现成组件上扩品牌化模板，后续单独一期", "section": "7"},
       {"id": 13, "point": "配置即内容、填字段别造组件、类型兜底", "section": "8,9"},
-      {"id": 14, "point": "数字主持人基础版：陪衬/脚稳/反对口型", "section": "10"},
-      {"id": 15, "point": "顶层读 window 打包崩 → MDC 规则一次写死", "section": "11"},
-      {"id": 16, "point": "一行命令出片 npx remotion render", "section": "12"},
-      {"id": 17, "point": "三步法回顾 + 没基础也能复制", "section": "13"},
-      {"id": 18, "point": "关注 + 下期预告（EP03 字幕匹配）", "section": "13"}
+      {"id": 14, "point": "数字人选型与落地：定位陪衬→AI 列真人/写实/二次元(VRM)+坑→对约束选定 VRM、不做对口型→AI 落地（取景/脚稳）", "section": "10,11"},
+      {"id": 15, "point": "三步法回顾 + 没基础也能复制", "section": "12"},
+      {"id": 16, "point": "关注 + 下期预告（EP03 字幕匹配）", "section": "12"}
     ]
   }
 }
