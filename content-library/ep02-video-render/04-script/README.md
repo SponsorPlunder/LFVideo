@@ -29,7 +29,7 @@ upstream_inputs:
     - 4s [代码结构演示]：画面展开 IDE，展示 JSON 配置文件中数据字段与渲染出的视频画面的动态对应映射，体现“改配置即改片”的声明式优势
     - 15s [主视觉渐显]：粒子背景渐显，主标题弹性入场（spring_scale）
     - 20s [副标题与路线图]：副标题淡入，三步路线图（探索路径、严谨选型、自动化落地）依次浮现并锁定
-- **[口播]** 你肯定干过这种事：改一个数字，一连串地方跟着要改，改完还得整条流程从头跑一遍，一等半天。我真烦透了，干脆把整条视频写成了代码。你看——改配置里这一行，回车，程序自己重编译，新片一秒出来。为啥这么干行得通？因为 AI 最拿手的就是啃文本和代码；那就把视频也变成代码和数据来驱动，改数据就改片，这活儿它接得最稳。这一期，就用这招解决视频自动渲染。整套引擎我一行没手写，全靠大白话指挥 AI 搭出来，这就叫 Vibe Coding——我没前后端基础，只管说要什么、判断对不对，剩下全甩给 AI。就三步：找路、选型、出片。记一句：你说人话，AI 干脏活，没基础也能抄。
+- **[口播]** 改一版视频，我只改配置里这一行字，回车，一秒钟新片自动出来。能这么干，靠的是一个判断：AI 最擅长的就是文本和代码，那就把整条视频也变成代码和数据来驱动——改数据，就等于改片。这一期，就用这招解决视频自动渲染。整套引擎我一行没手写，全靠大白话指挥 AI，这就叫 Vibe Coding：我没前后端基础，只负责说要什么、判断对不对，写和填交给 AI。三步走——找技术路径、做技术选型、技术落地出片。记一句：你说人话，AI 干脏活，没基础也能抄。
 
 ---
 
@@ -37,7 +37,7 @@ upstream_inputs:
 
 - **[画面]** 调用 `@ConceptScene`。参数 `eyebrow`="找技术路径"，`title`="先让 AI 把'能把视频写成代码'的路都摆出来"，`items`=[{label:"INPUT", title:"用代码/数据描述画面"}, {label:"COMPILE", title:"程序编译成帧"}, {label:"OUTPUT", title:"合成视频"}]，`background`="gradient"。
   - **[子镜头时间线]**：0s eyebrow + 标题入场 → 3s 三步骤卡片 stagger 入场 → 7s 箭头依次连接 INPUT→COMPILE→OUTPUT → 11s 整体轻微脉冲强调"内核一样"。
-- **[口播]** 先说第一步，找路。我没自己埋头啃文档，说实话太费劲——直接把选择题甩给 AI：想把视频写成代码、自动出片，现在有哪些现成路子？它一口气摆出来，我就咂摸出个味儿：这些路子骨子里全是一回事——拿代码描述画面、编译成一帧帧、再合成视频。就像做菜，菜谱写法五花八门，最后都得下锅开火。区别只在用什么语言、什么锅。
+- **[口播]** 第一步，找路。别自己埋头啃文档，把选择题直接甩给 AI：想把视频写成代码、自动出片，有哪些现成路子？它一摆出来，内核就清楚了——这些路子全是一回事：用代码描述画面、编译成一帧帧、再合成视频，区别只在用什么语言、什么引擎。
 
 ---
 
@@ -45,7 +45,7 @@ upstream_inputs:
 
 - **[画面]** 调用 `@ConceptScene`（卡片阵列，6 张）。参数 `title`="AI 摆出的六条路线"，`items`=[{title:"网页渲染 · Remotion", desc:"React 组件+CSS，无头浏览器逐帧截图"}, {title:"Motion Canvas/Revideo", desc:"写函数描述动画时序"}, {title:"Manim", desc:"Python 描述几何/公式"}, {title:"MoviePy", desc:"Python 操作像素+FFmpeg"}, {title:"PixiJS/Cocos", desc:"Canvas 上逐帧画"}, {title:"FFmpeg+脚本", desc:"命令行合成"}]。
   - **[子镜头时间线]**：0s 标题入场 → 3s 前三条卡片 stagger 入场 → 15s 后三条卡片 stagger 入场 → 28s 高亮 Remotion 卡 → 32s 底部浮出"同一内核：把画面编译成帧"。
-- **[口播]** AI 一口气给我摆了六条路。第一条网页渲染，台柱子是 Remotion，拿 React 组件加 CSS 画画面，再用无头浏览器一帧帧截图，复杂排版最拿手。第二条 Motion Canvas，写函数描述动画时序，做代码演示很顺手。第三条 Manim，用 Python 描述几何和公式，数学可视化的神器。第四条 MoviePy，Python 直接抠像素加 FFmpeg，简单拼接够用。第五条 PixiJS 这类画布引擎，在 Canvas 上逐帧画，专治复杂粒子特效。第六条 FFmpeg 加脚本，命令行合成，批量转码、烧字幕特别猛。名字一个比一个唬人，可你扒到底，全在干同一件事——把画面编译成帧。
+- **[口播]** AI 一口气给我摆了六条路。第一条网页渲染，台柱子是 Remotion，拿 React 组件加 CSS 画画面，再用无头浏览器一帧帧截图，复杂排版最拿手。第二条 Motion Canvas，写函数描述动画时序，做代码演示很顺手。第三条 Manim，用 Python 描述几何和公式，数学可视化的神器。第四条 MoviePy，Python 直接抠像素加 FFmpeg，简单拼接够用。第五条 PixiJS 这类画布引擎，在 Canvas 上逐帧画，专治复杂粒子特效。第六条 FFmpeg 加脚本，命令行合成，批量转码、烧字幕特别猛。六个名字听着各不相同，扒到底都在干同一件事——把画面编译成帧。
 
 ---
 
@@ -54,7 +54,7 @@ upstream_inputs:
 - **[B 轨]** `@VideoSlot`：`[B 轨占位替换提醒：请用户补充 IDE 录屏 — 和 AI 对话深度分析每条技术路线的局限性与关键约束（clip_id=b-ide-route-pitfalls）]`，作为 A 轨判断层矩阵的过程性 cut-in。
 - **[A 轨兜底]**（B 轨缺失时使用）调用 `@TableScene`。参数 `eyebrow`="对照技术约束做减法"，`title`="严谨分析技术路线局限性与关键约束"，`columns`=["技术路线","适用场景","局限条件","关键约束"]，`rows`=[["Remotion","前端栈、复杂网页排版、跨期模板复用","纯后台超长视频批处理","打包时读浏览器对象会崩；BUSL商业授权"],["Motion Canvas / Revideo","代码演示、精确时序动画设计","复杂企业级网页排版","技术生态规模较小，模板自攒成本高"],["Manim","数学、几何、算法可视化展示","常规 UI 排版、标准网页排版","学习曲线陡峭、排版弱、大场景渲染慢"],["MoviePy","纯 Python 简单拼贴、音轨自动闪避","复杂自适应布局、动态文字特效","排版繁琐、多层时重度消耗内存、难以缓存"],["PixiJS / Cocos","游戏类高性能粒子特效与交互动画","标准网页 UI 体系、自适应文字对齐","复杂多行文本排版与自适应计算繁琐"],["FFmpeg + 脚本","批量转码、底层音视频合并","高精度自定义动效、复杂页面排版","命令语法晦涩、调试与异常定位极度困难"]]，`highlight_row`=0，`highlight_column`=3。
   - **[子镜头时间线]**（口播 >15s，必填）：0s 表头淡入 → 5s 六行依次 stagger 入场（至 25s）→ 28s 高亮"关键约束"整列 → 38s B 轨 IDE 录屏切入 → 48s 高亮 Remotion 行 + 浮出"对照约束做减法"标记。
-- **[口播]** 第二步，选型，这步最容易翻车。你要是张嘴就问 AI 哪个好，它准跟个老好人似的，每个都夸一遍，听着个个都行，结果你还是挑花了眼。光听它报菜名没用，真正值钱的，是看清每条路啥时候掉链子。所以我反着来，逼它：把每条路适合干啥、还有那些会咬人的坑，全给我抖出来。整理完就是这张表。Remotion 适合前端栈和复杂自适应排版，可它是 Node 打包、无头浏览器渲染，你要在组件最外层直接读 window，打包阶段当场崩给你看；而且它走 BUSL 商业授权，做大了得掏钱。Motion Canvas 生态小，模板得自己一点点攒；Manim 排版弱、渲染慢；MoviePy 内存吃得凶，写自适应排版能把人写吐；PixiJS 光算个文字对齐就费老劲了；FFmpeg 那命令跟天书一样，一出问题你都不知道上哪儿查。坑全摊桌上，我再对着自己的需求做减法。记住：让 AI 把信息铺平，拍板的事你自己来。
+- **[口播]** 第二步，选型，最容易翻车。直接问 AI 哪个好没用，它会把每个都夸一遍；真正值钱的，是看清每条路在哪掉链子。所以我逼它：每条路适合干啥、有哪些会咬人的坑，全抖出来，整理成这张表。Remotion 适合前端栈和复杂自适应排版，但它 Node 打包、无头浏览器渲染，组件最外层直接读 window 会在打包阶段崩；而且走 BUSL 商业授权，规模化要付费。Motion Canvas 生态小，模板得自己攒；Manim 排版弱、渲染慢；MoviePy 写自适应排版繁琐、多层吃内存；PixiJS 光算文字对齐就费劲；FFmpeg 命令晦涩、出问题难定位。坑摊开，再对着自己的需求做减法。记一句：让 AI 把信息铺平，拍板你自己来。
 
 ---
 
@@ -62,7 +62,7 @@ upstream_inputs:
 
 - **[画面]** 调用 `@ConceptScene`。参数 `eyebrow`="回到我自己的约束"，`title`="为什么是 Remotion"，`items`=[{label:"模板", title:"固定模板换数据就复用", desc:"改一处主题全系列生效", icon:"🏗️"}, {label:"AI", title:"让 AI 接手最稳", desc:"只填数据、套现成组件，最不容易出错", icon:"🤖"}, {label:"CLI", title:"一行命令就出片", desc:"npx remotion render 纯命令行", icon:"▶️"}, {label:"WEB", title:"网页生态现成可用", desc:"CSS/动效/图表库随手拿", icon:"🌐"}]，`background`="gradient"。
   - **[子镜头时间线]**：0s eyebrow+标题入场 → 3s 三条约束卡 stagger 入场 → 12s "Remotion 胜出"四点浮现 → 20s badge="决定性"强调"模板换数据复用"。
-- **[口播]** 坑看清了，最后回到我自己的需求拍板。我把三条死要求摆给 AI：一期一个固定模板、换批数据就能批量出几十期；让 AI 自己改内容还不容易出错；好多期下来还得好维护。三条一对照，Remotion 明显赢——它组件和数据是分开的，改一处主题、整个系列跟着变；每期只让 AI 填数据、套现成组件，最不容易翻车；出片就一行命令；网页那套生态随手就能薅。说白了：它最听 AI 的话，也最经得起我反复折腾。
+- **[口播]** 坑看清了，回到我自己的约束拍板。三条死要求摆给 AI：一期一个固定模板、换批数据就能批量出几十期；让 AI 改内容还不容易出错；好多期下来还得好维护。三条一对照，Remotion 明显赢——组件和数据分开，改一处主题整个系列跟着变；每期只让 AI 填数据、套现成组件，最不容易翻车；出片就一行命令；网页那套生态随手就能用。说白了：它最听 AI 的话，也最经得起反复折腾。
 
 ---
 
@@ -73,7 +73,7 @@ upstream_inputs:
   - 右 `@ComparisonCard`：`title`="❌ 拼装 HTML 方案"，`points`=["维护成本高：无工程化复用，每期需单独拼接","结构易跑偏：无强类型约束，AI 发挥空间过大","难以长期维护：超过十期视频后维护将成为灾难"]，`status`="error"。
   - 下方代价条：`text`="局限与代价：React 栈，采用 BUSL 商业授权（规模化商用要付费）"。
   - **[子镜头时间线]**：0s 分屏 center-out 展开 → 5s 左侧三条 stagger入场 → 13s 右侧三条 stagger 入场 → 20s 底部代价条浮出 → 23s 左侧微放大（胜出方 1.03x）。
-- **[口播]** 可能有人要抬杠：我直接拿 HTML 拼一拼不更省事？行，俩摆一块儿比比。复用上，Remotion 改一个组件、全系列同步，手写拼接只能每期复制粘贴、越改越乱；跟 AI 配合上，Remotion 拿 TypeScript 把字段类型管得死死的，AI 只能老实填空，换成裸 HTML，它一撒欢结构就跑偏；维护上，做到第十期，Remotion 还能轻松扩，手写拼接基本就是一场灾难。代价当然有——你得吃 React 这套栈，还得认 BUSL 授权、做大了交钱。可前端这块本来就让 AI 写、我把方向，反倒把 Vibe Coding 的长处吃满了。一句话：宁可前期立规矩，别等后期擦屁股。
+- **[口播]** 有人觉得直接拿 HTML 拼更省事，比一比就清楚差在哪。复用上，Remotion 改一个组件全系列同步，手写拼接只能每期复制粘贴、越改越乱；配合 AI 上，Remotion 用 TypeScript 把字段类型管死，AI 只能老实填空，裸 HTML 一撒欢结构就跑偏；维护上，做到第十期，Remotion 还能轻松扩，手写拼接就是灾难。代价也如实说：得吃 React 这套栈，还得认 BUSL 授权、规模化付费。但前端本来就让 AI 写、我把方向，正好把 Vibe Coding 的长处吃满。一句话：宁可前期立规矩，别等后期擦屁股。
 
 ---
 
@@ -81,7 +81,7 @@ upstream_inputs:
 
 - **[画面]** 调用 `@ConceptScene`（流向图 + 组件清单）。参数 `eyebrow`="技术落地"，`title`="一份配置 → Explainer 按 type 分发 → 现成组件"，`items`=[{label:"comparison", title:"→ ComparisonCard 对比卡"}, {label:"terminal_scene", title:"→ 合成终端：逐行打字，不用真录屏"}, {label:"screenshot_scene", title:"→ 截图叠光标/点击/打字"}, {label:"charts", title:"→ 柱/线/饼图、KPI"}, {label:"ConceptScene/SplitLayout", title:"→ 概念图解/左右分屏"}]。
   - **[子镜头时间线]**：0s 流向图标题入场 → 4s "配置→Explainer→组件"箭头连通 → 12s type→组件清单 stagger 入场 → 20s 高亮 terminal_scene/screenshot_scene 旁标"不用真录屏"。
-- **[口播]** 选型定了，进第三步，落地。好消息是，落地也轮不到你手写，就是陪着 AI 把配置和组件对上号。仓库里这台引擎叫 remotion-composer，干活特别实在：你写一份配置，告诉它这段画面长啥样、上面叠什么，主程序 Explainer 就盯着配置里的 type 字段，自动拎出对应组件去渲。type 写 comparison 出对比卡，terminal_scene 是合成终端、命令逐行打出来、压根不用真录屏，screenshot_scene 把截图叠上光标点击，还有图表、概念图、分屏。全是现成通用件，照着填就能用。你要是想更有辨识度，还能让 AI 在这之上扩一套自己品牌的组件库——不过那是个更大的话题，以后单开一期聊。就记一句：引擎认的是 type，你喂对就行。
+- **[口播]** 选型定了，第三步落地。落地也不用你手写，就是陪 AI 把配置和组件对上号。仓库里这台引擎叫 remotion-composer：你写一份配置，说清这段画面长啥样、上面叠什么，主程序 Explainer 就按配置里的 type 字段，自动拎出对应组件去渲。type 写 comparison 出对比卡，terminal_scene 是合成终端、命令逐行打出来、不用真录屏，screenshot_scene 把截图叠上光标点击，还有图表、概念图、分屏，全是现成通用件，照着填就能用。想更有辨识度，还能让 AI 在这之上扩一套自有品牌组件库——那是更大的话题，以后单开一期。记一句：引擎认 type，你喂对就行。
 
 ---
 
@@ -89,7 +89,7 @@ upstream_inputs:
 
 - **[画面]** 调用 `@TerminalScene`。参数 `title`="只写配置：一个 comparison"，`language`="jsonc"，`code`=`{\n  "type": "comparison",\n  "title": "手工时序 vs 声明式配置",\n  "leftLabel": "手工时序",  "leftValue": "手工调整图层位置，改一处全身受累",\n  "rightLabel": "声明式配置", "rightValue": "改一行配置，程序自动重新对位"\n}`。
   - **[子镜头时间线]**：0s 终端标题入场 → 3s config 逐行打字入场 → 12s 高亮 `"type": "comparison"` → 16s 右侧注释浮出"TS 给每个字段定死格式，填错即编译报错"。
-- **[口播]** 重点来了，这是用 Vibe Coding 做视频最省心的一招：我从不让 AI 去发明新组件，只让它照着现成组件填配置。比方我要一张对比卡，就跟它说一句——左边写手工时序、右边写声明式配置。它吐出来的就是这么一段：type 填 comparison，标题、左右两栏的标签和内容填齐，收工。你看，我全程没碰一行代码，就动了动嘴皮子。记住：别让 AI 造轮子，让它把现成的轮子装上。
+- **[口播]** 这是用 Vibe Coding 做视频最省心的一招：从不让 AI 发明新组件，只让它照现成组件填配置。比方要一张对比卡，我就说一句——左边手工时序、右边声明式配置。它吐出来就是这段：type 填 comparison，标题、左右两栏的标签和内容填齐，收工。全程没碰一行代码，只动了动嘴。记一句：别让 AI 造轮子，让它把现成的轮子装上。
 
 ---
 
@@ -100,7 +100,7 @@ upstream_inputs:
   - 左 `@TerminalScene`：`title`="❌ 从零手写组件"，`language`="tsx"，`code`=`// 违反"数据与视图分离"，容易写出不可复用组件\nexport const ComparisonScene = () => {\n  // 手写布局/样式/动画，无视现成 @ComparisonCard\n  return <div className="custom">...</div>;\n};`。
   - 右 `@TerminalScene`：`title`="✅ 只填数据，复用现成组件"，`language`="ts"，`code`=`const comparison = {\n  left:  { title: '手工时序',   value: '手工调整图层位置' },\n  right: { title: '声明式配置', value: '改一行配置程序重对位' },\n};\n// <ComparisonCard {...comparison} /> — TS 字段类型兜底`。
   - **[子镜头时间线]**：0s 分屏入场 → 4s 左侧红标 ❌ 代码淡入 → 11s 右侧绿标 ✅ 数据淡入 → 16s 高亮右侧数据结构（或 B 轨录屏切入）→ 22s 正确方放大强调。
-- **[口播]** 为啥这么干最稳？看这组左右对照。左边是反面教材——让 AI 给这一期从零手写个新组件，又是重复造轮子，又把换数据就能复用这个最大的好处给整没了。右边才对路——只产出一份数据，丢给现成组件去渲。最关键的是，Remotion 拿 TypeScript 把每个 type 的字段格式都焊死了，AI 一旦填错、漏填，编译当场就给你报红。它只能在画好的格子里填空，撒欢的空间被压到最小。这就像考试发下来的是填空题，而不是让你交张白卷自由发挥——这恰恰就是没基础也能让它把活干住的原因。
+- **[口播]** 为什么填数据最稳，看这组对照。左边反面——让 AI 给这一期从零手写新组件，既重复造轮子，又把换数据复用这个最大好处弄没了。右边才对——只产出一份数据，丢给现成组件去渲。关键在于 Remotion 用 TypeScript 把每个 type 的字段格式焊死，AI 填错、漏填，编译当场报红，它只能在画好的格子里填空。这就像考试发的是填空题，而不是让你交白卷自由发挥——这正是没基础也能让 AI 把活干住的原因。
 
 ---
 
@@ -108,7 +108,7 @@ upstream_inputs:
 
 - **[画面]** 调用 `@ScreenshotScene`（VRMAvatar 取景预设示意 + 三处 callout）。参数 `title`="数字主持人 VRMAvatar：只做陪衬串场"，`callouts`=[{at:"取景", text:"整体渲一次，按场景裁半身/全身"}, {at:"脚踩稳", text:"在大腿上把髋部摆动反向抵消，脚踩原地"}, {at:"边界", text:"坚决不做对口型数字人、不做 AI 假界面"}]。
   - **[子镜头时间线]**：0s 主持人截图淡入 → 4s callout"取景预设"浮出 → 10s callout"脚踩稳（髋部反向抵消）"浮出 → 16s callout"反对口型边界"浮出。
-- **[口播]** 引擎里还塞了个 3D 主持人 VRMAvatar，定位我先说死：它就是个陪衬、来串场的，不是主角。整体渲一次，再按场景裁半身、全身，不用每段重搭。之前它待机光摆髋部，整条腿带着脚像钟摆一样来回甩，看着怪瘆人的；修法是在大腿上把髋部那点摆动反向抵消掉，脚这才老老实实踩住原地。还有条铁规矩——坚决不做对口型的数字人、不整 AI 假界面。可信度这东西，只能拿真实录屏换。
+- **[口播]** 引擎里还有个 3D 主持人 VRMAvatar，定位先说死：陪衬串场，不是主角。整体渲一次，再按场景裁半身、全身，不用每段重搭。之前它待机只摆髋部，整条腿像钟摆一样来回甩；修法是在大腿上把髋部那点摆动反向抵消，脚就踩住原地了。还有条铁规矩——坚决不做对口型数字人、不整 AI 假界面。可信度只能拿真实录屏换。
 
 ---
 
@@ -119,7 +119,7 @@ upstream_inputs:
   - 左 `@TerminalScene`：`title`="❌ 打包阶段就崩"，`language`="tsx"，`code`=`// Remotion 打包跑在 Node 里，没有 window\nconst w = window.innerWidth;  // 💥\n// ReferenceError: window is not defined`。
   - 右 `@TerminalScene`：`title`="✅ 守卫 + 规则一次写死"，`language`="tsx"，`code`=`const getWidth = () =>\n  typeof window !== 'undefined' ? window.innerWidth : 1920;\n\n// .cursor/rules/remotion-ssr.mdc（globs: remotion-composer/src/**）\n// "组件顶层不得直接读 window/document"`。
   - **[子镜头时间线]**（口播 >15s，必填）：0s 分屏入场 → 4s 左侧崩溃代码/录屏淡入 → 12s 左侧震动强调 ReferenceError（3px shake）→ 20s 右侧 typeof 守卫代码/录屏淡入 → 28s 浮出 `.cursor/rules/remotion-ssr.mdc` → 32s 右侧 badge="一次通过"。
-- **[口播]** 整个落地过程里，唯一让我反复栽跟头的，就是 SSR 这个坑。看左边：组件最外层直接读了 window。可 Remotion 打包那会儿是跑在 Node 里的，浏览器的门都还没进，哪来的 window？当场给你甩个 ReferenceError、渲染红屏。这就好比人还没进屋，你就伸手去摸墙上开灯——灯都还没装呢，可不摸了个空。右边咋修：加一句 typeof window 判断，是浏览器才读，不是就给个默认值。但更聪明的办法，不是每回都盯着 AI、嘴上提醒它，而是把这条规矩一次性写死——塞进 .cursor/rules 一个 mdc 文件，指到引擎源码目录，往后 AI 生成组件自动就带上这层判断，根本不用你盯。这就是 Vibe Coding 的精髓：重复的规矩，固化成规则交给 AI，别拿嘴一遍遍念。
+- **[口播]** 落地里唯一让我反复栽的，就是 SSR 这个坑。看左边：组件最外层直接读了 window。可 Remotion 打包时跑在 Node 里、浏览器都没进，根本没有 window，当场甩你一个 ReferenceError、渲染红屏。这就像人还没进屋就伸手去摸墙上开灯——灯还没装，当然摸空。右边怎么修：加一句 typeof window 判断，是浏览器才读，不是就给默认值。但更聪明的不是每次盯着 AI 提醒，而是把这条规矩一次写死——塞进 .cursor/rules 一个 mdc 文件、指到引擎源码目录，往后 AI 生成组件自动带上判断，不用你盯。这就是 Vibe Coding 的精髓：重复的规矩固化成规则交给 AI，别拿嘴一遍遍念。
 
 ---
 
@@ -128,7 +128,7 @@ upstream_inputs:
 - **[B 轨]** `@VideoSlot`：`[B 轨占位替换提醒：可选 — 终端真实录屏 npx remotion render 执行并输出 MP4（clip_id=b-term-render）；有 A 轨兜底]`。
 - **[A 轨兜底]**（B 轨缺失时使用）调用 `@TerminalScene`。参数 `title`="npx remotion render 出片"，`language`="bash"，`code`=`cd OpenMontage/remotion-composer\nnpx remotion studio                       # 可视化调试\nnpx remotion render src/index.ts \\\n  <CompositionId> out/ep02.mp4            # 渲染出片`。
   - **[子镜头时间线]**：0s 终端标题入场 → 4s 命令逐行打字 → 12s B 轨渲染录屏切入（或 A 轨模拟进度）→ 18s 进度条 0→100% 动画 → 23s 输出"✓ out/ep02.mp4"提示。
-- **[口播]** 终于到出片这一步了。这步你既不用写代码、也不用背命令，让 AI 在终端里替你敲就行。cd 进 remotion-composer，npx remotion studio 拉起来可视化调试，npx remotion render 直接出片。全程纯命令行，往后想接自动化、想搬上云，都顺得很。具体那个 Composition 注册名叫啥，录之前让 AI 跑一遍 studio 核对一下就稳了。一句话：能交给命令行的活，就别动手。
+- **[口播]** 最后出片。这步不用写代码、也不用背命令，让 AI 在终端替你敲：cd 进 remotion-composer，npx remotion studio 拉起可视化调试，npx remotion render 直接出片。全程纯命令行，往后接自动化、上云都顺。那个 Composition 注册名叫啥，录之前让 AI 跑一遍 studio 核对就稳了。一句话：能交给命令行的，就别动手。
 
 ---
 
@@ -136,7 +136,7 @@ upstream_inputs:
 
 - **[画面]** 调用 `@OutroScene`。参数 `headline`="整期三步：找技术路径 + 技术选型 + 技术落地"，`cta`="关注 · 下期 EP03 字幕匹配：Whisper 让字幕踩着话音跳"，`background`="gradient"。
   - **[子镜头时间线]**：0s 总结三步淡入 → 5s "没基础也能复制"落点强调 → 9s CTA 下期 EP03 打字机逐字显现 → 12s 关注脉冲（绿色）。
-- **[口播]** 回头看，拢共就三步：找路，让 AI 把现成路线全摆出来；选型，让 AI 列坑、你对着自己的约束拍板；落地，填配置、套组件、规则兜底、AI 跑渲染。你真正得练的，从来不是写代码，而是把需求讲清楚、把坑看住、把规则固化给 AI——就这些，没基础也能照着抄。下期 EP03，我用 Whisper 让字幕踩着话音、一个字一个字往外蹦。关注一下，别错过。
+- **[口播]** 回头看就三步：找路，让 AI 把现成路线全摆出来；选型，让 AI 列坑、你对着约束拍板；落地，填配置、套组件、规则兜底、AI 跑渲染。真正要练的从来不是写代码，而是把需求讲清楚、把坑看住、把规则固化给 AI——没基础也能照着抄。下期 EP03，用 Whisper 让字幕踩着话音、一个字一个字往外蹦。关注一下，别错过。
 
 ---
 
@@ -193,7 +193,7 @@ upstream_inputs:
       "section_ref": "开场钩子",
       "track": "A",
       "scene_template": "@IntroScene",
-      "voice": "你肯定干过这种事：改一个数字，一连串地方跟着要改，改完还得整条流程从头跑一遍，一等半天。我真烦透了，干脆把整条视频写成了代码。你看——改配置里这一行，回车，程序自己重编译，新片一秒出来。为啥这么干行得通？因为 AI 最拿手的就是啃文本和代码；那就把视频也变成代码和数据来驱动，改数据就改片，这活儿它接得最稳。这一期，就用这招解决视频自动渲染。整套引擎我一行没手写，全靠大白话指挥 AI 搭出来，这就叫 Vibe Coding——我没前后端基础，只管说要什么、判断对不对，剩下全甩给 AI。就三步：找路、选型、出片。记一句：你说人话，AI 干脏活，没基础也能抄。",
+      "voice": "改一版视频，我只改配置里这一行字，回车，一秒钟新片自动出来。能这么干，靠的是一个判断：AI 最擅长的就是文本和代码，那就把整条视频也变成代码和数据来驱动——改数据，就等于改片。这一期，就用这招解决视频自动渲染。整套引擎我一行没手写，全靠大白话指挥 AI，这就叫 Vibe Coding：我没前后端基础，只负责说要什么、判断对不对，写和填交给 AI。三步走——找技术路径、做技术选型、技术落地出片。记一句：你说人话，AI 干脏活，没基础也能抄。",
       "visual_instructions": "@IntroScene：左改 JSON 配置右终端 npx remotion render 1秒出片 → IDE 展开 JSON 字段与渲染画面动态映射，体现“改配置即改片”声明式优势 → 粒子背景渐显 + 主副标题与三步路线图依次浮现",
       "duration_hint_seconds": 30,
       "visual_beats": [
@@ -208,7 +208,7 @@ upstream_inputs:
       "section_ref": "找技术路径·让 AI 摆出多条路线（内核）",
       "track": "A",
       "scene_template": "@ConceptScene",
-      "voice": "先说第一步，找路。我没自己埋头啃文档，说实话太费劲——直接把选择题甩给 AI：想把视频写成代码、自动出片，现在有哪些现成路子？它一口气摆出来，我就咂摸出个味儿：这些路子骨子里全是一回事——拿代码描述画面、编译成一帧帧、再合成视频。就像做菜，菜谱写法五花八门，最后都得下锅开火。区别只在用什么语言、什么锅。",
+      "voice": "第一步，找路。别自己埋头啃文档，把选择题直接甩给 AI：想把视频写成代码、自动出片，有哪些现成路子？它一摆出来，内核就清楚了——这些路子全是一回事：用代码描述画面、编译成一帧帧、再合成视频，区别只在用什么语言、什么引擎。",
       "visual_instructions": "@ConceptScene：INPUT 描述画面 → COMPILE 编译成帧 → OUTPUT 合成视频，箭头连接",
       "duration_hint_seconds": 15,
       "visual_beats": [
@@ -223,7 +223,7 @@ upstream_inputs:
       "section_ref": "找技术路径·六条技术路线",
       "track": "A",
       "scene_template": "@ConceptScene",
-      "voice": "AI 一口气给我摆了六条路。第一条网页渲染，台柱子是 Remotion，拿 React 组件加 CSS 画画面，再用无头浏览器一帧帧截图，复杂排版最拿手。第二条 Motion Canvas，写函数描述动画时序，做代码演示很顺手。第三条 Manim，用 Python 描述几何和公式，数学可视化的神器。第四条 MoviePy，Python 直接抠像素加 FFmpeg，简单拼接够用。第五条 PixiJS 这类画布引擎，在 Canvas 上逐帧画，专治复杂粒子特效。第六条 FFmpeg 加脚本，命令行合成，批量转码、烧字幕特别猛。名字一个比一个唬人，可你扒到底，全在干同一件事——把画面编译成帧。",
+      "voice": "AI 一口气给我摆了六条路。第一条网页渲染，台柱子是 Remotion，拿 React 组件加 CSS 画画面，再用无头浏览器一帧帧截图，复杂排版最拿手。第二条 Motion Canvas，写函数描述动画时序，做代码演示很顺手。第三条 Manim，用 Python 描述几何和公式，数学可视化的神器。第四条 MoviePy，Python 直接抠像素加 FFmpeg，简单拼接够用。第五条 PixiJS 这类画布引擎，在 Canvas 上逐帧画，专治复杂粒子特效。第六条 FFmpeg 加脚本，命令行合成，批量转码、烧字幕特别猛。六个名字听着各不相同，扒到底都在干同一件事——把画面编译成帧。",
       "visual_instructions": "@ConceptScene：六张路线卡片（Remotion/Motion Canvas/Manim/MoviePy/PixiJS/FFmpeg），各配描述方式+适合场景",
       "duration_hint_seconds": 35,
       "visual_beats": [
@@ -239,7 +239,7 @@ upstream_inputs:
       "section_ref": "技术选型·严谨权衡技术局限与边界",
       "track": "A+B",
       "scene_template": "@TableScene",
-      "voice": "第二步，选型，这步最容易翻车。你要是张嘴就问 AI 哪个好，它准跟个老好人似的，每个都夸一遍，听着个个都行，结果你还是挑花了眼。光听它报菜名没用，真正值钱的，是看清每条路啥时候掉链子。所以我反着来，逼它：把每条路适合干啥、还有那些会咬人的坑，全给我抖出来。整理完就是这张表。Remotion 适合前端栈和复杂自适应排版，可它是 Node 打包、无头浏览器渲染，你要在组件最外层直接读 window，打包阶段当场崩给你看；而且它走 BUSL 商业授权，做大了得掏钱。Motion Canvas 生态小，模板得自己一点点攒；Manim 排版弱、渲染慢；MoviePy 内存吃得凶，写自适应排版能把人写吐；PixiJS 光算个文字对齐就费老劲了；FFmpeg 那命令跟天书一样，一出问题你都不知道上哪儿查。坑全摊桌上，我再对着自己的需求做减法。记住：让 AI 把信息铺平，拍板的事你自己来。",
+      "voice": "第二步，选型，最容易翻车。直接问 AI 哪个好没用，它会把每个都夸一遍；真正值钱的，是看清每条路在哪掉链子。所以我逼它：每条路适合干啥、有哪些会咬人的坑，全抖出来，整理成这张表。Remotion 适合前端栈和复杂自适应排版，但它 Node 打包、无头浏览器渲染，组件最外层直接读 window 会在打包阶段崩；而且走 BUSL 商业授权，规模化要付费。Motion Canvas 生态小，模板得自己攒；Manim 排版弱、渲染慢；MoviePy 写自适应排版繁琐、多层吃内存；PixiJS 光算文字对齐就费劲；FFmpeg 命令晦涩、出问题难定位。坑摊开，再对着自己的需求做减法。记一句：让 AI 把信息铺平，拍板你自己来。",
       "visual_instructions": "B 轨：和 AI 深度分析技术路线局限的 IDE 录屏（b-ide-route-pitfalls）；A 轨兜底：@TableScene 六方案矩阵（适用场景/局限条件/关键约束），highlight_row=0、highlight_column=3",
       "duration_hint_seconds": 55,
       "b_track_required": true,
@@ -257,7 +257,7 @@ upstream_inputs:
       "section_ref": "技术选型·回到约束为什么选 Remotion",
       "track": "A",
       "scene_template": "@ConceptScene",
-      "voice": "坑看清了，最后回到我自己的需求拍板。我把三条死要求摆给 AI：一期一个固定模板、换批数据就能批量出几十期；让 AI 自己改内容还不容易出错；好多期下来还得好维护。三条一对照，Remotion 明显赢——它组件和数据是分开的，改一处主题、整个系列跟着变；每期只让 AI 填数据、套现成组件，最不容易翻车；出片就一行命令；网页那套生态随手就能薅。说白了：它最听 AI 的话，也最经得起我反复折腾。",
+      "voice": "坑看清了，回到我自己的约束拍板。三条死要求摆给 AI：一期一个固定模板、换批数据就能批量出几十期；让 AI 改内容还不容易出错；好多期下来还得好维护。三条一对照，Remotion 明显赢——组件和数据分开，改一处主题整个系列跟着变；每期只让 AI 填数据、套现成组件，最不容易翻车；出片就一行命令；网页那套生态随手就能用。说白了：它最听 AI 的话，也最经得起反复折腾。",
       "visual_instructions": "@ConceptScene：约束三条 → Remotion 胜出四点（模板/AI/CLI/网页生态），badge 决定性=数据分离",
       "duration_hint_seconds": 25,
       "visual_beats": [
@@ -272,7 +272,7 @@ upstream_inputs:
       "section_ref": "技术选型·Remotion vs 拼装 HTML 方案",
       "track": "A",
       "scene_template": "@SplitLayout",
-      "voice": "可能有人要抬杠：我直接拿 HTML 拼一拼不更省事？行，俩摆一块儿比比。复用上，Remotion 改一个组件、全系列同步，手写拼接只能每期复制粘贴、越改越乱；跟 AI 配合上，Remotion 拿 TypeScript 把字段类型管得死死的，AI 只能老实填空，换成裸 HTML，它一撒欢结构就跑偏；维护上，做到第十期，Remotion 还能轻松扩，手写拼接基本就是一场灾难。代价当然有——你得吃 React 这套栈，还得认 BUSL 授权、做大了交钱。可前端这块本来就让 AI 写、我把方向，反倒把 Vibe Coding 的长处吃满了。一句话：宁可前期立规矩，别等后期擦屁股。",
+      "voice": "有人觉得直接拿 HTML 拼更省事，比一比就清楚差在哪。复用上，Remotion 改一个组件全系列同步，手写拼接只能每期复制粘贴、越改越乱；配合 AI 上，Remotion 用 TypeScript 把字段类型管死，AI 只能老实填空，裸 HTML 一撒欢结构就跑偏；维护上，做到第十期，Remotion 还能轻松扩，手写拼接就是灾难。代价也如实说：得吃 React 这套栈，还得认 BUSL 授权、规模化付费。但前端本来就让 AI 写、我把方向，正好把 Vibe Coding 的长处吃满。一句话：宁可前期立规矩，别等后期擦屁股。",
       "visual_instructions": "@SplitLayout(@ComparisonCard 左✅Remotion / 右❌拼装 HTML，各三条) + 底部代价条（React/BUSL）",
       "duration_hint_seconds": 25,
       "visual_beats": [
@@ -288,7 +288,7 @@ upstream_inputs:
       "section_ref": "技术落地①·配置分发",
       "track": "A",
       "scene_template": "@ConceptScene",
-      "voice": "选型定了，进第三步，落地。好消息是，落地也轮不到你手写，就是陪着 AI 把配置和组件对上号。仓库里这台引擎叫 remotion-composer，干活特别实在：你写一份配置，告诉它这段画面长啥样、上面叠什么，主程序 Explainer 就盯着配置里的 type 字段，自动拎出对应组件去渲。type 写 comparison 出对比卡，terminal_scene 是合成终端、命令逐行打出来、压根不用真录屏，screenshot_scene 把截图叠上光标点击，还有图表、概念图、分屏。全是现成通用件，照着填就能用。你要是想更有辨识度，还能让 AI 在这之上扩一套自己品牌的组件库——不过那是个更大的话题，以后单开一期聊。就记一句：引擎认的是 type，你喂对就行。",
+      "voice": "选型定了，第三步落地。落地也不用你手写，就是陪 AI 把配置和组件对上号。仓库里这台引擎叫 remotion-composer：你写一份配置，说清这段画面长啥样、上面叠什么，主程序 Explainer 就按配置里的 type 字段，自动拎出对应组件去渲。type 写 comparison 出对比卡，terminal_scene 是合成终端、命令逐行打出来、不用真录屏，screenshot_scene 把截图叠上光标点击，还有图表、概念图、分屏，全是现成通用件，照着填就能用。想更有辨识度，还能让 AI 在这之上扩一套自有品牌组件库——那是更大的话题，以后单开一期。记一句：引擎认 type，你喂对就行。",
       "visual_instructions": "@ConceptScene：流向图 配置 → Explainer 按 type 分发 → 组件；type→组件清单 stagger，标注 terminal/screenshot 不用真录屏",
       "duration_hint_seconds": 25,
       "visual_beats": [
@@ -303,7 +303,7 @@ upstream_inputs:
       "section_ref": "技术落地①·配置即内容",
       "track": "A",
       "scene_template": "@TerminalScene",
-      "voice": "重点来了，这是用 Vibe Coding 做视频最省心的一招：我从不让 AI 去发明新组件，只让它照着现成组件填配置。比方我要一张对比卡，就跟它说一句——左边写手工时序、右边写声明式配置。它吐出来的就是这么一段：type 填 comparison，标题、左右两栏的标签和内容填齐，收工。你看，我全程没碰一行代码，就动了动嘴皮子。记住：别让 AI 造轮子，让它把现成的轮子装上。",
+      "voice": "这是用 Vibe Coding 做视频最省心的一招：从不让 AI 发明新组件，只让它照现成组件填配置。比方要一张对比卡，我就说一句——左边手工时序、右边声明式配置。它吐出来就是这段：type 填 comparison，标题、左右两栏的标签和内容填齐，收工。全程没碰一行代码，只动了动嘴。记一句：别让 AI 造轮子，让它把现成的轮子装上。",
       "visual_instructions": "@TerminalScene：逐行打字展示一段 comparison 配置 JSON，高亮 type 字段 + 注释 TS 字段值兜底",
       "duration_hint_seconds": 20,
       "visual_beats": [
@@ -318,7 +318,7 @@ upstream_inputs:
       "section_ref": "技术落地①·造组件 vs 填数据",
       "track": "A+B",
       "scene_template": "@SplitLayout",
-      "voice": "为啥这么干最稳？看这组左右对照。左边是反面教材——让 AI 给这一期从零手写个新组件，又是重复造轮子，又把换数据就能复用这个最大的好处给整没了。右边才对路——只产出一份数据，丢给现成组件去渲。最关键的是，Remotion 拿 TypeScript 把每个 type 的字段格式都焊死了，AI 一旦填错、漏填，编译当场就给你报红。它只能在画好的格子里填空，撒欢的空间被压到最小。这就像考试发下来的是填空题，而不是让你交张白卷自由发挥——这恰恰就是没基础也能让它把活干住的原因。",
+      "voice": "为什么填数据最稳，看这组对照。左边反面——让 AI 给这一期从零手写新组件，既重复造轮子，又把换数据复用这个最大好处弄没了。右边才对——只产出一份数据，丢给现成组件去渲。关键在于 Remotion 用 TypeScript 把每个 type 的字段格式焊死，AI 填错、漏填，编译当场报红，它只能在画好的格子里填空。这就像考试发的是填空题，而不是让你交白卷自由发挥——这正是没基础也能让 AI 把活干住的原因。",
       "visual_instructions": "B 轨：IDE 录屏 从零手写❌ vs 只填数据✅（b-ide-config-fill）；A 轨兜底：@SplitLayout 左 @TerminalScene 手写组件代码 / 右 @TerminalScene data 对象",
       "duration_hint_seconds": 25,
       "b_track_required": true,
@@ -336,7 +336,7 @@ upstream_inputs:
       "section_ref": "技术落地②·数字主持人基础版",
       "track": "A",
       "scene_template": "@ScreenshotScene",
-      "voice": "引擎里还塞了个 3D 主持人 VRMAvatar，定位我先说死：它就是个陪衬、来串场的，不是主角。整体渲一次，再按场景裁半身、全身，不用每段重搭。之前它待机光摆髋部，整条腿带着脚像钟摆一样来回甩，看着怪瘆人的；修法是在大腿上把髋部那点摆动反向抵消掉，脚这才老老实实踩住原地。还有条铁规矩——坚决不做对口型的数字人、不整 AI 假界面。可信度这东西，只能拿真实录屏换。",
+      "voice": "引擎里还有个 3D 主持人 VRMAvatar，定位先说死：陪衬串场，不是主角。整体渲一次，再按场景裁半身、全身，不用每段重搭。之前它待机只摆髋部，整条腿像钟摆一样来回甩；修法是在大腿上把髋部那点摆动反向抵消，脚就踩住原地了。还有条铁规矩——坚决不做对口型数字人、不整 AI 假界面。可信度只能拿真实录屏换。",
       "visual_instructions": "@ScreenshotScene：VRMAvatar 取景预设 + 三处 callout（取景/脚踩稳·髋部反向抵消/反对口型边界）",
       "duration_hint_seconds": 22,
       "visual_beats": [
@@ -351,7 +351,7 @@ upstream_inputs:
       "section_ref": "技术落地②·SSR 避坑",
       "track": "A+B",
       "scene_template": "@SplitLayout",
-      "voice": "整个落地过程里，唯一让我反复栽跟头的，就是 SSR 这个坑。看左边：组件最外层直接读了 window。可 Remotion 打包那会儿是跑在 Node 里的，浏览器的门都还没进，哪来的 window？当场给你甩个 ReferenceError、渲染红屏。这就好比人还没进屋，你就伸手去摸墙上开灯——灯都还没装呢，可不摸了个空。右边咋修：加一句 typeof window 判断，是浏览器才读，不是就给个默认值。但更聪明的办法，不是每回都盯着 AI、嘴上提醒它，而是把这条规矩一次性写死——塞进 .cursor/rules 一个 mdc 文件，指到引擎源码目录，往后 AI 生成组件自动就带上这层判断，根本不用你盯。这就是 Vibe Coding 的精髓：重复的规矩，固化成规则交给 AI，别拿嘴一遍遍念。",
+      "voice": "落地里唯一让我反复栽的，就是 SSR 这个坑。看左边：组件最外层直接读了 window。可 Remotion 打包时跑在 Node 里、浏览器都没进，根本没有 window，当场甩你一个 ReferenceError、渲染红屏。这就像人还没进屋就伸手去摸墙上开灯——灯还没装，当然摸空。右边怎么修：加一句 typeof window 判断，是浏览器才读，不是就给默认值。但更聪明的不是每次盯着 AI 提醒，而是把这条规矩一次写死——塞进 .cursor/rules 一个 mdc 文件、指到引擎源码目录，往后 AI 生成组件自动带上判断，不用你盯。这就是 Vibe Coding 的精髓：重复的规矩固化成规则交给 AI，别拿嘴一遍遍念。",
       "visual_instructions": "B 轨：window 崩溃→守卫修复 IDE 录屏（b-ide-ssr-crash/b-ide-ssr-fix）；A 轨兜底：@SplitLayout 左 ReferenceError 代码 / 右 typeof 守卫 + .cursor/rules/remotion-ssr.mdc",
       "duration_hint_seconds": 35,
       "b_track_required": true,
@@ -370,7 +370,7 @@ upstream_inputs:
       "section_ref": "技术落地②·一行出片",
       "track": "A+B",
       "scene_template": "@TerminalScene",
-      "voice": "终于到出片这一步了。这步你既不用写代码、也不用背命令，让 AI 在终端里替你敲就行。cd 进 remotion-composer，npx remotion studio 拉起来可视化调试，npx remotion render 直接出片。全程纯命令行，往后想接自动化、想搬上云，都顺得很。具体那个 Composition 注册名叫啥，录之前让 AI 跑一遍 studio 核对一下就稳了。一句话：能交给命令行的活，就别动手。",
+      "voice": "最后出片。这步不用写代码、也不用背命令，让 AI 在终端替你敲：cd 进 remotion-composer，npx remotion studio 拉起可视化调试，npx remotion render 直接出片。全程纯命令行，往后接自动化、上云都顺。那个 Composition 注册名叫啥，录之前让 AI 跑一遍 studio 核对就稳了。一句话：能交给命令行的，就别动手。",
       "visual_instructions": "B 轨：终端真实录屏 npx remotion render（b-term-render，可选）；A 轨兜底：@TerminalScene render 命令 + 模拟进度条",
       "duration_hint_seconds": 25,
       "b_track_required": false,
@@ -388,7 +388,7 @@ upstream_inputs:
       "section_ref": "结尾 CTA",
       "track": "A",
       "scene_template": "@OutroScene",
-      "voice": "回头看，拢共就三步：找路，让 AI 把现成路线全摆出来；选型，让 AI 列坑、你对着自己的约束拍板；落地，填配置、套组件、规则兜底、AI 跑渲染。你真正得练的，从来不是写代码，而是把需求讲清楚、把坑看住、把规则固化给 AI——就这些，没基础也能照着抄。下期 EP03，我用 Whisper 让字幕踩着话音、一个字一个字往外蹦。关注一下，别错过。",
+      "voice": "回头看就三步：找路，让 AI 把现成路线全摆出来；选型，让 AI 列坑、你对着约束拍板；落地，填配置、套组件、规则兜底、AI 跑渲染。真正要练的从来不是写代码，而是把需求讲清楚、把坑看住、把规则固化给 AI——没基础也能照着抄。下期 EP03，用 Whisper 让字幕踩着话音、一个字一个字往外蹦。关注一下，别错过。",
       "visual_instructions": "@OutroScene：三步法总结 + '没基础也能复制' + CTA 下期 EP03 字幕匹配，打字机 + 脉冲",
       "duration_hint_seconds": 15,
       "visual_beats": [
