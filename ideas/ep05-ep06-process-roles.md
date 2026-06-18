@@ -25,8 +25,7 @@
 | :--- | :--- | :--- | :--- |
 | 01 选题分析 | `/01-topic-research` | 选题分析师 | 选题判断、标题候选、受众分析 |
 | 02 内容策划 | `/02-content-planning` | 内容策划师 | 教学软文 + 分镜大纲 + 校验 JSON |
-| 03 B站视听策划 | `/03-video-planning-bilibili` | 视觉策划师 | 组件映射、Props、动画 Cue、Zoom 指令 |
-| 04 脚本撰写 | `/04-script-draft` | 文案撰稿人 | 分轨台词脚本 + 多平台改写 |
+| 04 分镜口播稿 | `/04-script-draft` | 分镜口播导演（合并原视听策划师 + 文案撰稿人） | 一体「画面（组件映射/Props/动画 Cue/Zoom 指令）+ 口播台词」+ 多平台改写（自 ep03 起退役独立 03 视听策划） |
 | 05 视频组装 | `/05-video-assembly` | 视频工程师 | Remotion 可渲染成片 |
 | … | … | … | …（06 TTS → 13 归档见 PIPELINE.md） |
 
