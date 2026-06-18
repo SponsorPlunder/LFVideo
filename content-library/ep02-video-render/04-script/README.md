@@ -6,13 +6,12 @@ source_workflow: /04-script-draft
 upstream_inputs:
   - 02-plan/README.md (status: draft)
   - 02-plan/tutorial.final.md (status: draft)
-  - 03-plan-bilibili/README.md (status: draft)
   - shared/docs/remotion-spec.md
 ---
 
-> ⚠️ **重做版（对齐三段主线）**：本脚本已按 `tutorial.final.md` 的「教人用 Vibe Coding」三段主线重写——开场 → 找技术路径 → 技术选型 → 技术落地 → 总结，并逐段对齐 `03-plan-bilibili/README.md` 的 12 个 scene_storyboard。旧的「两步/选路线·搭引擎」框架已弃用（流程即代码/角色编排归 EP05/EP06）。上游 `tutorial.final.md` 当前为 `draft`，本稿随其一同待人工复核后再置 `approved`。
+> 🎬 **分镜口播稿（合并 03+04 一体产出）**：本稿由 `分镜口播导演` 角色按 `/04-script-draft`「分镜口播稿」工作流，以上游 `02-plan/README.md` 故事大纲 + `02-plan/tutorial.final.md`（内容真相源）一次性写成——每段「`[画面]`（Remotion 组件映射/Props/子镜头时间线/B 轨 zoom 指令）+ `[口播]`」一体，逐段互为约束，不再有独立的 03 视听策划产物。文末 JSON 契约同时承载画面蓝图（`video_spec` / 每段 `props`·`animation_cues` / `zoom_crop_directives`），是下游 05 录屏 / 06 TTS / 07 组装的唯一真源（SSOT）。上游 `tutorial.final.md` 当前为 `draft`，本稿随其一同待人工复核后再置 `approved`。
 
-# ep02 视频脚本：《用 Vibe Coding 搭一套能自动出片的视频渲染引擎》
+# ep02 分镜口播稿：《用 Vibe Coding 搭一套能自动出片的视频渲染引擎》
 
 **总时长预估**：约 5 分 18 秒（318s）
 **口播字数预估**：约 1750 字
@@ -130,7 +129,7 @@ upstream_inputs:
 
 ## 6. 自我检查清单
 
-- ✅ B 站深度版完整产出（12 段，对齐 03 蓝图 12 个 scene_storyboard，约 1750 字、约 5 分 18 秒）
+- ✅ B 站深度版完整产出（12 段画面+口播一体，约 1750 字、约 5 分 18 秒）
 - ✅ **主线＝教人用 Vibe Coding**：开场结果先行 + 人设；每个技术段体现"人讲需求/看坑/定规则 + AI 写和填"；结尾落点"没基础也能复制"
 - ✅ **去抽象腔**：全文未用"范式/换一套心智模型/帧即状态"等抽象标签，一律大白话
 - ✅ **单期范围纪律**：流程即代码/角色（EP05/06）、字幕（EP03）、音频均未展开，仅结尾一句预告
@@ -172,21 +171,71 @@ upstream_inputs:
   "platform": "bilibili",
   "estimated_duration_seconds": 318,
   "total_word_count": 1750,
-  "anti_hype_forbidden": ["多少行代码", "百倍", "千倍", "一键生成"],
+  "anti_hype_forbidden": [
+    "多少行代码",
+    "百倍",
+    "千倍",
+    "一键生成"
+  ],
+  "video_spec": {
+    "aspect_ratio": "16:9",
+    "resolution": "1920x1080",
+    "fps": 30
+  },
   "sections": [
     {
       "id": "1",
       "section_ref": "开场钩子",
       "track": "A",
       "scene_template": "@IntroScene",
+      "props": {
+        "title": "用 Vibe Coding 搭一套能自动出片的视频渲染引擎",
+        "subtitle": "《Vibe Coding 造一条自动化视频生产线》EP02 · 视频渲染",
+        "roadmap": [
+          "① 找技术路径",
+          "② 技术选型",
+          "③ 技术落地"
+        ],
+        "background": "particles"
+      },
       "voice": "改一版视频，我只改配置里这一行字，回车，一秒钟新片自动出来。能这么干，靠的是一个判断：AI 最擅长的就是文本和代码，那就把整条视频也变成代码和数据来驱动——改数据，就等于改片。这一期，就用这招解决视频自动渲染。整套引擎我一行没手写，全靠大白话指挥 AI，这就叫 Vibe Coding：我没前后端基础，只负责说要什么、判断对不对，写和填交给 AI。三步走——找技术路径、做技术选型、技术落地出片。记一句：你说人话，AI 干脏活，没基础也能抄。",
       "visual_instructions": "@IntroScene：左改 JSON 配置右终端 npx remotion render 1秒出片 → IDE 展开 JSON 字段与渲染画面动态映射，体现“改配置即改片”声明式优势 → 粒子背景渐显 + 主副标题与三步路线图依次浮现",
       "duration_hint_seconds": 30,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "[双画面] 左改 JSON 配置, 右终端运行 1 秒出片结果先行"
+        },
+        {
+          "frame": 120,
+          "action": "[代码演示] 展示 IDE 配置文件与渲染视频的映射关系"
+        },
+        {
+          "frame": 450,
+          "action": "[主视觉] 粒子背景渐显，主标题弹性入场 spring_scale"
+        },
+        {
+          "frame": 600,
+          "action": "[路线图] 副标题淡入，三步路线卡片依次浮现并锁定"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "[双画面] 左改 JSON 配置一行字，右终端 npx remotion render 进度条 1秒锁死、即刻出片"},
-        {"at_seconds": 4, "action": "[代码结构演示] IDE 展开 JSON 配置，数据字段与渲染画面动态对应映射，体现“改配置即改片”的声明式优势"},
-        {"at_seconds": 15, "action": "[主视觉] 粒子背景渐显，主标题弹性入场 spring_scale"},
-        {"at_seconds": 20, "action": "[路线图] 副标题淡入，三步路线卡片依次浮现并锁定"}
+        {
+          "at_seconds": 0,
+          "action": "[双画面] 左改 JSON 配置一行字，右终端 npx remotion render 进度条 1秒锁死、即刻出片"
+        },
+        {
+          "at_seconds": 4,
+          "action": "[代码结构演示] IDE 展开 JSON 配置，数据字段与渲染画面动态对应映射，体现“改配置即改片”的声明式优势"
+        },
+        {
+          "at_seconds": 15,
+          "action": "[主视觉] 粒子背景渐显，主标题弹性入场 spring_scale"
+        },
+        {
+          "at_seconds": 20,
+          "action": "[路线图] 副标题淡入，三步路线卡片依次浮现并锁定"
+        }
       ]
     },
     {
@@ -194,14 +243,65 @@ upstream_inputs:
       "section_ref": "找技术路径·让 AI 摆出多条路线（内核）",
       "track": "A",
       "scene_template": "@ConceptScene",
+      "props": {
+        "eyebrow": "找技术路径",
+        "title": "把视频写成代码，内核都一样",
+        "items": [
+          {
+            "label": "STEP 1",
+            "title": "用代码/数据描述画面",
+            "desc": "组件、函数、公式或脚本",
+            "icon": "✍️"
+          },
+          {
+            "label": "STEP 2",
+            "title": "程序编译成帧",
+            "desc": "渲染器逐帧算出画面",
+            "icon": "⚙️"
+          },
+          {
+            "label": "STEP 3",
+            "title": "合成视频",
+            "desc": "帧序列拼成 MP4",
+            "icon": "🎬"
+          }
+        ],
+        "background": "gradient"
+      },
       "voice": "第一步，找路。别自己埋头啃文档，把选择题直接甩给 AI：想把视频写成代码、自动出片，有哪些现成路子？它一摆出来，内核就清楚了——这些路子全是一回事：用代码描述画面、编译成一帧帧、再合成视频，区别只在用什么语言、什么引擎。",
       "visual_instructions": "@ConceptScene：INPUT 描述画面 → COMPILE 编译成帧 → OUTPUT 合成视频，箭头连接",
       "duration_hint_seconds": 15,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "fade_in(eyebrow+title)"
+        },
+        {
+          "frame": 150,
+          "action": "stagger_fade(items)"
+        },
+        {
+          "frame": 360,
+          "action": "connect_arrows(items)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "eyebrow + 标题入场"},
-        {"at_seconds": 3, "action": "三步骤卡片 stagger 入场"},
-        {"at_seconds": 7, "action": "箭头连接 INPUT→COMPILE→OUTPUT"},
-        {"at_seconds": 11, "action": "脉冲强调'内核一样'"}
+        {
+          "at_seconds": 0,
+          "action": "eyebrow + 标题入场"
+        },
+        {
+          "at_seconds": 3,
+          "action": "三步骤卡片 stagger 入场"
+        },
+        {
+          "at_seconds": 7,
+          "action": "箭头连接 INPUT→COMPILE→OUTPUT"
+        },
+        {
+          "at_seconds": 11,
+          "action": "脉冲强调'内核一样'"
+        }
       ]
     },
     {
@@ -209,15 +309,91 @@ upstream_inputs:
       "section_ref": "找技术路径·六条技术路线",
       "track": "A",
       "scene_template": "@ConceptScene",
+      "props": {
+        "eyebrow": "让 AI 把路都摆出来",
+        "title": "六条把视频写成代码的路线",
+        "items": [
+          {
+            "label": "Remotion",
+            "title": "网页（React+CSS）渲染",
+            "desc": "React 组件 + CSS/SVG，无头浏览器逐帧截图｜前端栈、复杂排版、模板复用",
+            "icon": "⚛️"
+          },
+          {
+            "label": "Motion Canvas / Revideo",
+            "title": "代码声明动画",
+            "desc": "写函数描述动画时序｜代码演示、讲解类动画",
+            "icon": "📐"
+          },
+          {
+            "label": "Manim",
+            "title": "数学公式动画",
+            "desc": "Python 描述几何/公式｜数学、算法可视化",
+            "icon": "∑"
+          },
+          {
+            "label": "MoviePy",
+            "title": "像素脚本拼接",
+            "desc": "Python 操作像素 + FFmpeg｜纯 Python、简单拼接",
+            "icon": "🐍"
+          },
+          {
+            "label": "PixiJS / Cocos",
+            "title": "画布/游戏引擎",
+            "desc": "Canvas 上逐帧画｜复杂粒子、游戏化动画",
+            "icon": "🎮"
+          },
+          {
+            "label": "FFmpeg + 脚本",
+            "title": "命令行合成",
+            "desc": "命令拼接｜批量转码、轻量字幕烧录",
+            "icon": "🛠️"
+          }
+        ],
+        "background": "gradient"
+      },
       "voice": "AI 一口气给我摆了六条路。第一条网页渲染，台柱子是 Remotion，拿 React 组件加 CSS 画画面，再用无头浏览器一帧帧截图，复杂排版最拿手。第二条 Motion Canvas，写函数描述动画时序，做代码演示很顺手。第三条 Manim，用 Python 描述几何和公式，数学可视化的神器。第四条 MoviePy，Python 直接抠像素加 FFmpeg，简单拼接够用。第五条 PixiJS 这类画布引擎，在 Canvas 上逐帧画，专治复杂粒子特效。第六条 FFmpeg 加脚本，命令行合成，批量转码、烧字幕特别猛。六个名字听着各不相同，扒到底都在干同一件事——把画面编译成帧。",
       "visual_instructions": "@ConceptScene：六张路线卡片（Remotion/Motion Canvas/Manim/MoviePy/PixiJS/FFmpeg），各配描述方式+适合场景",
       "duration_hint_seconds": 35,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "fade_in(eyebrow+title)"
+        },
+        {
+          "frame": 150,
+          "action": "stagger_fade(items[0..2])"
+        },
+        {
+          "frame": 600,
+          "action": "stagger_fade(items[3..5])"
+        },
+        {
+          "frame": 900,
+          "action": "highlight(items[0]=Remotion, badge=本期主角)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "标题入场"},
-        {"at_seconds": 3, "action": "前三条卡片 stagger 入场"},
-        {"at_seconds": 15, "action": "后三条卡片 stagger 入场"},
-        {"at_seconds": 28, "action": "高亮 Remotion 卡"},
-        {"at_seconds": 32, "action": "浮出'同一内核：编译成帧'"}
+        {
+          "at_seconds": 0,
+          "action": "标题入场"
+        },
+        {
+          "at_seconds": 3,
+          "action": "前三条卡片 stagger 入场"
+        },
+        {
+          "at_seconds": 15,
+          "action": "后三条卡片 stagger 入场"
+        },
+        {
+          "at_seconds": 28,
+          "action": "高亮 Remotion 卡"
+        },
+        {
+          "at_seconds": 32,
+          "action": "浮出'同一内核：编译成帧'"
+        }
       ]
     },
     {
@@ -225,17 +401,102 @@ upstream_inputs:
       "section_ref": "技术选型·严谨权衡技术局限与边界",
       "track": "A+B",
       "scene_template": "@TableScene",
+      "props": {
+        "title": "严谨分析技术路线局限性与关键约束",
+        "columns": [
+          "技术路线",
+          "适用场景",
+          "局限条件",
+          "关键约束"
+        ],
+        "rows": [
+          [
+            "Remotion",
+            "前端栈、复杂网页排版、跨期模板复用",
+            "纯后台超长视频批处理",
+            "打包时读浏览器对象会崩；BUSL商业授权"
+          ],
+          [
+            "Motion Canvas / Revideo",
+            "代码演示、精确时序动画设计",
+            "复杂企业级网页排版",
+            "技术生态规模较小，模板自攒成本高"
+          ],
+          [
+            "Manim",
+            "数学、几何、算法可视化展示",
+            "常规 UI 排版、标准网页排版",
+            "学习曲线陡峭、排版弱、大场景渲染慢"
+          ],
+          [
+            "MoviePy",
+            "纯 Python 简单拼贴、音轨自动闪避",
+            "复杂自适应布局、动态文字特效",
+            "排版繁琐、多层时重度消耗内存、难以缓存"
+          ],
+          [
+            "PixiJS / Cocos",
+            "游戏类高性能粒子特效与交互动画",
+            "标准网页 UI 体系、自适应文字对齐",
+            "复杂多行文本排版与自适应计算繁琐"
+          ],
+          [
+            "FFmpeg + 脚本",
+            "批量转码、轻量字幕与底层音视频合并",
+            "高精度自定义动效、复杂页面排版",
+            "命令语法晦涩、调试与异常定位极度困难"
+          ]
+        ],
+        "highlight_column": 3
+      },
       "voice": "第二步，选型，最容易翻车。直接问 AI 哪个好没用，它会把每个都夸一遍；真正值钱的，是看清每条路在哪掉链子。所以我逼它：每条路适合干啥、有哪些会咬人的坑，全抖出来，整理成这张表。Remotion 适合前端栈和复杂自适应排版，但它 Node 打包、无头浏览器渲染，组件最外层直接读 window 会在打包阶段崩；而且走 BUSL 商业授权，规模化要付费。Motion Canvas 生态小，模板得自己攒；Manim 排版弱、渲染慢；MoviePy 写自适应排版繁琐、多层吃内存；PixiJS 光算文字对齐就费劲；FFmpeg 命令晦涩、出问题难定位。坑摊开，再对着自己的需求做减法。记一句：让 AI 把信息铺平，拍板你自己来。",
       "visual_instructions": "B 轨：和 AI 深度分析技术路线局限的 IDE 录屏（b-ide-route-pitfalls）；A 轨兜底：@TableScene 六方案矩阵（适用场景/局限条件/关键约束），highlight_row=0、highlight_column=3",
       "duration_hint_seconds": 55,
       "b_track_required": true,
       "b_track_notes": "IDE 录屏：和 AI 追问每条技术路线的局限条件与关键约束",
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "fade_in(title+header_row)"
+        },
+        {
+          "frame": 150,
+          "action": "stagger_rows_in(rows, 每行约 9f)"
+        },
+        {
+          "frame": 750,
+          "action": "highlight_column(关键约束)"
+        },
+        {
+          "frame": 1050,
+          "action": "highlight_row(Remotion, annotation=约束可用规则文件优雅绕开)"
+        },
+        {
+          "frame": 1500,
+          "action": "dim(其余行, focus=Remotion)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "表头淡入"},
-        {"at_seconds": 5, "action": "六行依次 stagger 入场（至 25s）"},
-        {"at_seconds": 28, "action": "高亮'关键约束'整列"},
-        {"at_seconds": 38, "action": "B 轨 IDE 录屏切入"},
-        {"at_seconds": 48, "action": "高亮 Remotion 行 + '对照约束做减法'标记"}
+        {
+          "at_seconds": 0,
+          "action": "表头淡入"
+        },
+        {
+          "at_seconds": 5,
+          "action": "六行依次 stagger 入场（至 25s）"
+        },
+        {
+          "at_seconds": 28,
+          "action": "高亮'关键约束'整列"
+        },
+        {
+          "at_seconds": 38,
+          "action": "B 轨 IDE 录屏切入"
+        },
+        {
+          "at_seconds": 48,
+          "action": "高亮 Remotion 行 + '对照约束做减法'标记"
+        }
       ]
     },
     {
@@ -243,14 +504,72 @@ upstream_inputs:
       "section_ref": "技术选型·回到约束为什么选 Remotion",
       "track": "A",
       "scene_template": "@ConceptScene",
+      "props": {
+        "eyebrow": "回到自己的约束，让 AI 对号入座",
+        "title": "为什么是 Remotion",
+        "items": [
+          {
+            "label": "复用",
+            "title": "固定模板换数据",
+            "desc": "React 组件 + 数据分离，改一处主题全系列生效",
+            "icon": "♻️"
+          },
+          {
+            "label": "稳",
+            "title": "让 AI 接手最稳",
+            "desc": "只让 AI 填数据、套现成组件，不自由发挥结构",
+            "icon": "🤖"
+          },
+          {
+            "label": "出片",
+            "title": "一行命令",
+            "desc": "npx remotion render 纯命令行，方便接自动化",
+            "icon": "⌨️"
+          },
+          {
+            "label": "生态",
+            "title": "网页生态现成",
+            "desc": "CSS、动效、图表库随手取用",
+            "icon": "🌐"
+          }
+        ],
+        "footnote": "代价如实说：React 技术栈 + BUSL 商业授权（规模化要付费）。决策记录见 _decisions/why-remotion-over-hyperframes.md（verified）。",
+        "background": "gradient"
+      },
       "voice": "坑看清了，回到我自己的约束拍板。三条死要求摆给 AI：一期一个固定模板、换批数据就能批量出几十期；让 AI 改内容还不容易出错；好多期下来还得好维护。三条一对照，Remotion 明显赢——组件和数据分开，改一处主题整个系列跟着变；每期只让 AI 填数据、套现成组件，最不容易翻车；出片就一行命令；网页那套生态随手就能用。说白了：它最听 AI 的话，也最经得起反复折腾。",
       "visual_instructions": "@ConceptScene：约束三条 → Remotion 胜出四点（模板/AI/CLI/网页生态），badge 决定性=数据分离",
       "duration_hint_seconds": 25,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "fade_in(eyebrow+title)"
+        },
+        {
+          "frame": 150,
+          "action": "stagger_fade(items)"
+        },
+        {
+          "frame": 600,
+          "action": "fade_in(footnote: 代价 React 栈 + BUSL)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "eyebrow + 标题入场"},
-        {"at_seconds": 3, "action": "三条约束卡 stagger 入场"},
-        {"at_seconds": 12, "action": "Remotion 胜出四点浮现"},
-        {"at_seconds": 20, "action": "badge='决定性'强调'模板换数据复用'"}
+        {
+          "at_seconds": 0,
+          "action": "eyebrow + 标题入场"
+        },
+        {
+          "at_seconds": 3,
+          "action": "三条约束卡 stagger 入场"
+        },
+        {
+          "at_seconds": 12,
+          "action": "Remotion 胜出四点浮现"
+        },
+        {
+          "at_seconds": 20,
+          "action": "badge='决定性'强调'模板换数据复用'"
+        }
       ]
     },
     {
@@ -258,15 +577,70 @@ upstream_inputs:
       "section_ref": "技术选型·Remotion vs 拼装 HTML 方案",
       "track": "A",
       "scene_template": "@SplitLayout",
+      "props": {
+        "direction": "horizontal",
+        "ratio": 0.5,
+        "left": {
+          "label": "✅ Remotion",
+          "rows": [
+            "模板复用：改一处全系列生效",
+            "让 AI 接手：结构稳，只填数据",
+            "长期维护：十期后还能管",
+            "授权：BUSL（规模化要付费）"
+          ]
+        },
+        "right": {
+          "label": "❌ 复制粘贴 HTML",
+          "rows": [
+            "模板复用：每期复制改，越改越乱",
+            "让 AI 接手：结构容易跑偏",
+            "长期维护：十期后维护困难",
+            "授权：更宽松"
+          ]
+        }
+      },
       "voice": "有人觉得直接让 AI 拿 HTML 拼更省事，比一比就清楚差在哪——注意，两条路都是 AI 写代码，差的是工程化。复用上，Remotion 组件和数据分开，改一处全系列同步；裸 HTML 没有复用，AI 每期都得从头拼，改着改着就乱。约束上，Remotion 用 TypeScript 把字段类型管死，AI 只能老实填空；裸 HTML 没有强类型兜底，AI 一撒欢结构就跑偏。维护上，到第十期，Remotion 还能轻松扩，裸 HTML 早成了一团乱麻。代价也如实说：得吃 React 这套栈，还得认 BUSL 授权、规模化付费。但前端本来就让 AI 写、我把方向，正好把 Vibe Coding 的长处吃满。一句话：宁可前期立规矩，别等后期擦屁股。",
       "visual_instructions": "@SplitLayout(@ComparisonCard 左✅Remotion / 右❌拼装 HTML，各三条) + 底部代价条（React/BUSL）",
       "duration_hint_seconds": 25,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "wipe_reveal(split_layout)"
+        },
+        {
+          "frame": 150,
+          "action": "stagger_in(left.rows)"
+        },
+        {
+          "frame": 450,
+          "action": "stagger_in(right.rows)"
+        },
+        {
+          "frame": 690,
+          "action": "highlight(left, badge=胜出)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "分屏 center-out 展开"},
-        {"at_seconds": 5, "action": "左侧三条 stagger 入场"},
-        {"at_seconds": 13, "action": "右侧三条 stagger 入场"},
-        {"at_seconds": 20, "action": "底部代价条浮出"},
-        {"at_seconds": 23, "action": "左侧微放大 1.03x"}
+        {
+          "at_seconds": 0,
+          "action": "分屏 center-out 展开"
+        },
+        {
+          "at_seconds": 5,
+          "action": "左侧三条 stagger 入场"
+        },
+        {
+          "at_seconds": 13,
+          "action": "右侧三条 stagger 入场"
+        },
+        {
+          "at_seconds": 20,
+          "action": "底部代价条浮出"
+        },
+        {
+          "at_seconds": 23,
+          "action": "左侧微放大 1.03x"
+        }
       ]
     },
     {
@@ -274,14 +648,78 @@ upstream_inputs:
       "section_ref": "技术落地①·配置分发",
       "track": "A",
       "scene_template": "@ConceptScene",
+      "props": {
+        "eyebrow": "技术落地",
+        "title": "一份配置，自动分发成画面",
+        "flow": "一份配置(cut/overlay) → Explainer 按 type 分发 → 现成组件",
+        "items": [
+          {
+            "label": "comparison",
+            "title": "ComparisonCard",
+            "desc": "左右对比卡",
+            "icon": "↔️"
+          },
+          {
+            "label": "terminal_scene",
+            "title": "TerminalScene",
+            "desc": "合成终端：命令+输出逐行打出，不用真录屏",
+            "icon": "🖥️"
+          },
+          {
+            "label": "screenshot_scene",
+            "title": "ScreenshotScene",
+            "desc": "丢一张截图，脚本化叠光标/点击/打字",
+            "icon": "🖱️"
+          },
+          {
+            "label": "*_chart",
+            "title": "charts/",
+            "desc": "bar/line/pie/kpi 图表动效",
+            "icon": "📊"
+          },
+          {
+            "label": "ConceptScene / SplitLayout",
+            "title": "概念图解 / 左右分屏",
+            "desc": "概念与对照",
+            "icon": "🧩"
+          }
+        ],
+        "background": "gradient"
+      },
       "voice": "选型定了，第三步落地。落地也不用你手写，就是陪 AI 把配置和组件对上号。仓库里这台引擎叫 remotion-composer：你写一份配置，说清这段画面长啥样、上面叠什么，主程序 Explainer 就按配置里的 type 字段，自动拎出对应组件去渲。type 写 comparison 出对比卡，terminal_scene 是合成终端、命令逐行打出来、不用真录屏，screenshot_scene 把截图叠上光标点击，还有图表、概念图、分屏，全是现成通用件，照着填就能用。想更有辨识度，还能让 AI 在这之上扩一套自有品牌组件库——那是更大的话题，以后单开一期。记一句：引擎认 type，你喂对就行。",
       "visual_instructions": "@ConceptScene：流向图 配置 → Explainer 按 type 分发 → 组件；type→组件清单 stagger，标注 terminal/screenshot 不用真录屏",
       "duration_hint_seconds": 25,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "fade_in(eyebrow+title)"
+        },
+        {
+          "frame": 150,
+          "action": "draw_flow(配置 → Explainer → 组件)"
+        },
+        {
+          "frame": 450,
+          "action": "stagger_fade(items, type→组件 连线)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "流向图标题入场"},
-        {"at_seconds": 4, "action": "配置→Explainer→组件 箭头连通"},
-        {"at_seconds": 12, "action": "type→组件清单 stagger 入场"},
-        {"at_seconds": 20, "action": "高亮 terminal_scene/screenshot_scene 标'不用真录屏'"}
+        {
+          "at_seconds": 0,
+          "action": "流向图标题入场"
+        },
+        {
+          "at_seconds": 4,
+          "action": "配置→Explainer→组件 箭头连通"
+        },
+        {
+          "at_seconds": 12,
+          "action": "type→组件清单 stagger 入场"
+        },
+        {
+          "at_seconds": 20,
+          "action": "高亮 terminal_scene/screenshot_scene 标'不用真录屏'"
+        }
       ]
     },
     {
@@ -289,14 +727,46 @@ upstream_inputs:
       "section_ref": "技术落地①·配置即内容",
       "track": "A",
       "scene_template": "@TerminalScene",
+      "props": {
+        "title": "配置即内容：让 AI 填字段，别造组件",
+        "language": "jsonc",
+        "code": "// ✅ 只写配置：一个 comparison，Explainer 自动渲成对比卡\n{\n  \"type\": \"comparison\",\n  \"title\": \"传统剪辑 vs 代码即视频\",\n  \"leftLabel\": \"传统剪辑\",   \"leftValue\": \"拖时间轴，改一处全手工重排\",\n  \"rightLabel\": \"代码即视频\", \"rightValue\": \"改一行配置，重新编译出片\"\n}",
+        "annotation": "TypeScript 给每个 type 的字段定好格式，AI 填错/漏填编译时立刻报错"
+      },
       "voice": "这是用 Vibe Coding 做视频最省心的一招：从不让 AI 发明新组件，只让它照现成组件填配置。比方要一张对比卡，我就说一句——左边手工时序、右边声明式配置。它吐出来就是这段：type 填 comparison，标题、左右两栏的标签和内容填齐，收工。全程没碰一行代码，只动了动嘴。记一句：别让 AI 造轮子，让它把现成的轮子装上。",
       "visual_instructions": "@TerminalScene：逐行打字展示一段 comparison 配置 JSON，高亮 type 字段 + 注释 TS 字段值兜底",
       "duration_hint_seconds": 20,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "typewriter(code)"
+        },
+        {
+          "frame": 360,
+          "action": "highlight_line(type=comparison)"
+        },
+        {
+          "frame": 480,
+          "action": "fade_in(annotation: 类型兜底，填错即报错)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "终端标题入场"},
-        {"at_seconds": 3, "action": "config 逐行打字入场"},
-        {"at_seconds": 12, "action": "高亮 \"type\": \"comparison\""},
-        {"at_seconds": 16, "action": "注释浮出'TS 字段定死格式，填错即编译报错'"}
+        {
+          "at_seconds": 0,
+          "action": "终端标题入场"
+        },
+        {
+          "at_seconds": 3,
+          "action": "config 逐行打字入场"
+        },
+        {
+          "at_seconds": 12,
+          "action": "高亮 \"type\": \"comparison\""
+        },
+        {
+          "at_seconds": 16,
+          "action": "注释浮出'TS 字段定死格式，填错即编译报错'"
+        }
       ]
     },
     {
@@ -304,17 +774,66 @@ upstream_inputs:
       "section_ref": "技术落地①·造组件 vs 填数据",
       "track": "A+B",
       "scene_template": "@SplitLayout",
+      "props": {
+        "direction": "horizontal",
+        "ratio": 0.5,
+        "left": {
+          "label": "❌ 让 AI 从零手写 ComparisonScene.tsx",
+          "component": "@VideoSlot",
+          "src": "[B轨占位：IDE 录屏—AI 从零造新组件]",
+          "note": "重复造轮子，丢掉『换数据就复用』"
+        },
+        "right": {
+          "label": "✅ 只填数据复用现成 comparison",
+          "component": "@VideoSlot",
+          "src": "[B轨占位：IDE 录屏—只写一份配置喂给现成组件]",
+          "note": "TS 字段类型兜底，AI 乱发挥空间最小"
+        }
+      },
       "voice": "为什么填数据最稳，看这组对照。左边反面——让 AI 给这一期从零手写新组件，既重复造轮子，又把换数据复用这个最大好处弄没了。右边才对——只产出一份数据，丢给现成组件去渲。关键在于 Remotion 用 TypeScript 把每个 type 的字段格式焊死，AI 填错、漏填，编译当场报红，它只能在画好的格子里填空。这就像考试发的是填空题，而不是让你交白卷自由发挥——这正是没基础也能让 AI 把活干住的原因。",
       "visual_instructions": "B 轨：IDE 录屏 从零手写❌ vs 只填数据✅（b-ide-config-fill）；A 轨兜底：@SplitLayout 左 @TerminalScene 手写组件代码 / 右 @TerminalScene data 对象",
       "duration_hint_seconds": 25,
       "b_track_required": true,
       "b_track_notes": "IDE 录屏：AI 从零手写组件 vs 只写 data 喂现成 @ComparisonCard",
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "wipe_reveal(split_layout)"
+        },
+        {
+          "frame": 150,
+          "action": "fade_in(left_video: 从零手写)"
+        },
+        {
+          "frame": 450,
+          "action": "fade_in(right_video: 只填数据)"
+        },
+        {
+          "frame": 690,
+          "action": "highlight(right, badge=推荐)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "分屏入场"},
-        {"at_seconds": 4, "action": "左侧红标 ❌ 手写组件代码淡入"},
-        {"at_seconds": 11, "action": "右侧绿标 ✅ data 数据淡入"},
-        {"at_seconds": 16, "action": "高亮右侧数据结构（或 B 轨录屏切入）"},
-        {"at_seconds": 22, "action": "正确方放大强调"}
+        {
+          "at_seconds": 0,
+          "action": "分屏入场"
+        },
+        {
+          "at_seconds": 4,
+          "action": "左侧红标 ❌ 手写组件代码淡入"
+        },
+        {
+          "at_seconds": 11,
+          "action": "右侧绿标 ✅ data 数据淡入"
+        },
+        {
+          "at_seconds": 16,
+          "action": "高亮右侧数据结构（或 B 轨录屏切入）"
+        },
+        {
+          "at_seconds": 22,
+          "action": "正确方放大强调"
+        }
       ]
     },
     {
@@ -322,14 +841,71 @@ upstream_inputs:
       "section_ref": "技术落地②·数字人选型",
       "track": "A",
       "scene_template": "@TableScene",
+      "props": {
+        "title": "数字人选型：定位陪衬，让 AI 列形象与坑",
+        "columns": [
+          "形象方案",
+          "适用场景",
+          "局限与代价"
+        ],
+        "rows": [
+          [
+            "真人出镜（自己 / 找人）",
+            "最可信、有温度",
+            "要露脸出镜、不可编程批量复用、隐私成本"
+          ],
+          [
+            "写实数字人 / 对口型",
+            "接近真人主播",
+            "易掉进恐怖谷、可信度反而崩；口型/表情是重活"
+          ],
+          [
+            "二次元 / 3D 风格化角色（VRM）",
+            "风格统一、可编程、渲一次到处用、不踩恐怖谷",
+            "需建模与动作绑定，但可交给 AI / 现成方案"
+          ]
+        ],
+        "highlight_row": 2,
+        "footnote": "对约束（不露脸 / 可编程批量复用 / 避恐怖谷）拍板：选 3D 风格化角色 VRMAvatar，定死陪衬、不做对口型。"
+      },
       "voice": "还要不要个出镜形象串场？这事也走选型那套——先定死位置：数字人只做陪衬，不是主角。再让 AI 把可选形象连坑一起摆出来：真人出镜最可信，但得露脸、没法编程复用；写实对口型容易掉进恐怖谷、可信度反而崩；二次元 3D 角色风格统一、可编程、渲一次到处用，还不踩恐怖谷。对着我的约束挑——不露脸、要批量复用、避恐怖谷，就选 3D 角色 VRMAvatar，定死陪衬、坚决不做对口型。记一句：形象也让 AI 列，你按约束拍板。",
       "visual_instructions": "@TableScene：数字人选型矩阵（形象方案/适用场景/局限与代价），三行=真人出镜/写实对口型/二次元(VRM)，highlight_row=2，脚注=对约束选定 VRMAvatar、定死陪衬不做对口型",
       "duration_hint_seconds": 30,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "fade_in(title+header_row)"
+        },
+        {
+          "frame": 150,
+          "action": "stagger_rows_in(rows, 每行约 120f)"
+        },
+        {
+          "frame": 540,
+          "action": "highlight_row(VRM, annotation=对约束选定)"
+        },
+        {
+          "frame": 780,
+          "action": "fade_in(footnote: 拍板理由)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "表头淡入"},
-        {"at_seconds": 5, "action": "真人/写实/二次元三行依次 stagger 入场"},
-        {"at_seconds": 18, "action": "高亮 VRM 行'对约束选定'"},
-        {"at_seconds": 26, "action": "浮出拍板理由脚注（不露脸/可编程复用/避恐怖谷）"}
+        {
+          "at_seconds": 0,
+          "action": "表头淡入"
+        },
+        {
+          "at_seconds": 5,
+          "action": "真人/写实/二次元三行依次 stagger 入场"
+        },
+        {
+          "at_seconds": 18,
+          "action": "高亮 VRM 行'对约束选定'"
+        },
+        {
+          "at_seconds": 26,
+          "action": "浮出拍板理由脚注（不露脸/可编程复用/避恐怖谷）"
+        }
       ]
     },
     {
@@ -337,14 +913,53 @@ upstream_inputs:
       "section_ref": "技术落地②·数字人落地取景",
       "track": "A",
       "scene_template": "@ScreenshotScene",
+      "props": {
+        "title": "AI 落地：渲一次按场景取景，站得稳",
+        "image": "[A轨占位：VRMAvatar 取景预设截图—角落/半身/全身景别]",
+        "callouts": [
+          "渲染一次、按场景裁出角落/半身/全身等景别（取景预设，verified）",
+          "站得稳：在大腿上反向抵消髋部摆动，让脚踩在原地（verified：本期已修，见 PR『plant VRM feet』）",
+          "划清边界：只做陪衬串场，坚决不做对口型数字人 / AI 假界面，可信度靠真实录屏"
+        ]
+      },
       "voice": "选定之后交给 AI 落地。整体渲一次，再按场景裁角落、半身、全身，不用每段重搭。之前待机只摆髋部，整条腿像钟摆一样甩；在大腿上把那点摆动反向抵消，脚就踩稳了。可信度始终靠真实录屏，不整 AI 假界面。",
       "visual_instructions": "@ScreenshotScene：VRMAvatar 取景预设 + 三处 callout（取景·角落/半身/全身 · 脚踩稳·髋部反向抵消 · 反对口型边界）",
       "duration_hint_seconds": 18,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "fade_in(avatar_screenshot)"
+        },
+        {
+          "frame": 150,
+          "action": "callout(取景预设, 角落/半身/全身)"
+        },
+        {
+          "frame": 330,
+          "action": "callout(脚踩稳, before/after 对比)"
+        },
+        {
+          "frame": 480,
+          "action": "callout(反对口型边界)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "主持人截图淡入"},
-        {"at_seconds": 5, "action": "callout '取景预设（角落/半身/全身）' 浮出"},
-        {"at_seconds": 11, "action": "callout '脚踩稳（髋部反向抵消）' 浮出"},
-        {"at_seconds": 16, "action": "callout '反对口型边界' 浮出"}
+        {
+          "at_seconds": 0,
+          "action": "主持人截图淡入"
+        },
+        {
+          "at_seconds": 5,
+          "action": "callout '取景预设（角落/半身/全身）' 浮出"
+        },
+        {
+          "at_seconds": 11,
+          "action": "callout '脚踩稳（髋部反向抵消）' 浮出"
+        },
+        {
+          "at_seconds": 16,
+          "action": "callout '反对口型边界' 浮出"
+        }
       ]
     },
     {
@@ -352,14 +967,116 @@ upstream_inputs:
       "section_ref": "结尾 CTA",
       "track": "A",
       "scene_template": "@OutroScene",
+      "props": {
+        "headline": "三步法：找技术路径 + 技术选型 + 技术落地，没编程基础也能复制",
+        "cta": "关注 · 下期 EP03 字幕匹配：Whisper 字级时间戳驱动 CaptionOverlay，让字幕踩着话音跳",
+        "background": "gradient"
+      },
       "voice": "回头看就三步：找路，让 AI 把现成路线全摆出来；选型，让 AI 列坑、你对着约束拍板；落地，填配置、套现成组件、配个陪衬数字人，AI 自动出片。真正要练的从来不是写代码，而是把需求讲清楚、把坑看住、把活交给 AI——没基础也能照着抄。下期 EP03，用 Whisper 让字幕踩着话音、一个字一个字往外蹦。关注一下，别错过。",
       "visual_instructions": "@OutroScene：三步法总结 + '没基础也能复制' + CTA 下期 EP03 字幕匹配，打字机 + 脉冲",
       "duration_hint_seconds": 15,
+      "animation_cues": [
+        {
+          "frame": 0,
+          "action": "fade_in(headline)"
+        },
+        {
+          "frame": 150,
+          "action": "typewriter(cta)"
+        },
+        {
+          "frame": 330,
+          "action": "pulse(cta)"
+        }
+      ],
       "visual_beats": [
-        {"at_seconds": 0, "action": "总结三步淡入"},
-        {"at_seconds": 5, "action": "'没基础也能复制' 落点强调"},
-        {"at_seconds": 9, "action": "CTA 下期 EP03 打字机逐字"},
-        {"at_seconds": 12, "action": "关注脉冲（绿色）"}
+        {
+          "at_seconds": 0,
+          "action": "总结三步淡入"
+        },
+        {
+          "at_seconds": 5,
+          "action": "'没基础也能复制' 落点强调"
+        },
+        {
+          "at_seconds": 9,
+          "action": "CTA 下期 EP03 打字机逐字"
+        },
+        {
+          "at_seconds": 12,
+          "action": "关注脉冲（绿色）"
+        }
+      ]
+    }
+  ],
+  "zoom_crop_directives": [
+    {
+      "clip_id": "b-ide-route-pitfalls",
+      "timestamp_start": "0:00",
+      "timestamp_end": "0:20",
+      "zoom_level": 1.3,
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.4
+      }
+    },
+    {
+      "clip_id": "b-ide-config-fill",
+      "timestamp_start": "0:00",
+      "timestamp_end": "0:15",
+      "zoom_level": 1.0,
+      "focal_point": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "clip_id": "b-ide-config-fill",
+      "timestamp_start": "0:15",
+      "timestamp_end": "0:25",
+      "zoom_level": 1.4,
+      "focal_point": {
+        "x": 0.45,
+        "y": 0.4
+      }
+    }
+  ],
+  "template_tickets": [],
+  "b_track_assets_required": [
+    {
+      "clip_id": "b-ide-route-pitfalls",
+      "description": "IDE 录屏：和 AI 对话追问每条技术路线的'不适用 + 已知坑'，人盯着坑做减法",
+      "zoom_crop_directives": [
+        {
+          "timestamp_start": "0:00",
+          "timestamp_end": "0:10",
+          "zoom_level": 1.0,
+          "description": "全貌：对话提问'每个方案什么情况不适用、有哪些坑'"
+        },
+        {
+          "timestamp_start": "0:10",
+          "timestamp_end": "0:20",
+          "zoom_level": 1.3,
+          "description": "聚焦：AI 回答里的'坑'列表"
+        }
+      ]
+    },
+    {
+      "clip_id": "b-ide-config-fill",
+      "description": "IDE 录屏：从零手写组件（反面 ❌）对照只写一份 data 喂现成 @ComparisonCard（正面 ✅）",
+      "zoom_crop_directives": [
+        {
+          "timestamp_start": "0:00",
+          "timestamp_end": "0:15",
+          "zoom_level": 1.0,
+          "description": "全貌：打开配置文件，准备填字段"
+        },
+        {
+          "timestamp_start": "0:15",
+          "timestamp_end": "0:25",
+          "zoom_level": 1.4,
+          "description": "聚焦：comparison 的 left/right 字段 + TS 报错提示"
+        }
       ]
     }
   ],
@@ -369,44 +1086,90 @@ upstream_inputs:
     "acceptance_standard": true,
     "ai_limitations_exposed": true
   },
-  "b_track_assets_required": [
-    {
-      "clip_id": "b-ide-route-pitfalls",
-      "description": "IDE 录屏：和 AI 对话追问每条技术路线的'不适用 + 已知坑'，人盯着坑做减法",
-      "zoom_crop_directives": [
-        {"timestamp_start": "0:00", "timestamp_end": "0:10", "zoom_level": 1.0, "description": "全貌：对话提问'每个方案什么情况不适用、有哪些坑'"},
-        {"timestamp_start": "0:10", "timestamp_end": "0:20", "zoom_level": 1.3, "description": "聚焦：AI 回答里的'坑'列表"}
-      ]
-    },
-    {
-      "clip_id": "b-ide-config-fill",
-      "description": "IDE 录屏：从零手写组件（反面 ❌）对照只写一份 data 喂现成 @ComparisonCard（正面 ✅）",
-      "zoom_crop_directives": [
-        {"timestamp_start": "0:00", "timestamp_end": "0:15", "zoom_level": 1.0, "description": "全貌：打开配置文件，准备填字段"},
-        {"timestamp_start": "0:15", "timestamp_end": "0:25", "zoom_level": 1.4, "description": "聚焦：comparison 的 left/right 字段 + TS 报错提示"}
-      ]
-    }
-  ],
   "coverage_checklist": {
     "total": 16,
     "covered": 16,
     "items": [
-      {"id": 1, "point": "一句话点题：本期用 Vibe Coding 解决视频自动渲染", "section": "1"},
-      {"id": 2, "point": "关键认知钩子：AI 最强处理文本/代码 → 渲染用文本/代码/数据驱动", "section": "1"},
-      {"id": 3, "point": "人设（只点一次）：没基础、全程 Vibe Coding", "section": "1"},
-      {"id": 4, "point": "三步路线图：找技术路径 → 技术选型 → 技术落地", "section": "1"},
-      {"id": 5, "point": "让 AI 罗列多条路线（六条）", "section": "2,3"},
-      {"id": 6, "point": "点明共同内核：描述画面 → 编译成帧 → 合成视频（只列不评）", "section": "2,3"},
-      {"id": 7, "point": "逼 AI 给不适用+已知坑，人盯坑做减法", "section": "4"},
-      {"id": 8, "point": "回到自己约束 → 为什么 Remotion", "section": "5"},
-      {"id": 9, "point": "Remotion vs 复制粘贴 HTML + 代价（React/BUSL）", "section": "6"},
-      {"id": 10, "point": "引擎按 type 分发：配置 → Explainer → 组件", "section": "7"},
-      {"id": 11, "point": "组件清单", "section": "7"},
-      {"id": 12, "point": "自有风格组件库：现成组件上扩品牌化模板，后续单独一期", "section": "7"},
-      {"id": 13, "point": "配置即内容、填字段别造组件、类型兜底", "section": "8,9"},
-      {"id": 14, "point": "数字人选型与落地：定位陪衬→AI 列真人/写实/二次元(VRM)+坑→对约束选定 VRM、不做对口型→AI 落地（取景/脚稳）", "section": "10,11"},
-      {"id": 15, "point": "三步法回顾 + 没基础也能复制", "section": "12"},
-      {"id": 16, "point": "关注 + 下期预告（EP03 字幕匹配）", "section": "12"}
+      {
+        "id": 1,
+        "point": "一句话点题：本期用 Vibe Coding 解决视频自动渲染",
+        "section": "1"
+      },
+      {
+        "id": 2,
+        "point": "关键认知钩子：AI 最强处理文本/代码 → 渲染用文本/代码/数据驱动",
+        "section": "1"
+      },
+      {
+        "id": 3,
+        "point": "人设（只点一次）：没基础、全程 Vibe Coding",
+        "section": "1"
+      },
+      {
+        "id": 4,
+        "point": "三步路线图：找技术路径 → 技术选型 → 技术落地",
+        "section": "1"
+      },
+      {
+        "id": 5,
+        "point": "让 AI 罗列多条路线（六条）",
+        "section": "2,3"
+      },
+      {
+        "id": 6,
+        "point": "点明共同内核：描述画面 → 编译成帧 → 合成视频（只列不评）",
+        "section": "2,3"
+      },
+      {
+        "id": 7,
+        "point": "逼 AI 给不适用+已知坑，人盯坑做减法",
+        "section": "4"
+      },
+      {
+        "id": 8,
+        "point": "回到自己约束 → 为什么 Remotion",
+        "section": "5"
+      },
+      {
+        "id": 9,
+        "point": "Remotion vs 复制粘贴 HTML + 代价（React/BUSL）",
+        "section": "6"
+      },
+      {
+        "id": 10,
+        "point": "引擎按 type 分发：配置 → Explainer → 组件",
+        "section": "7"
+      },
+      {
+        "id": 11,
+        "point": "组件清单",
+        "section": "7"
+      },
+      {
+        "id": 12,
+        "point": "自有风格组件库：现成组件上扩品牌化模板，后续单独一期",
+        "section": "7"
+      },
+      {
+        "id": 13,
+        "point": "配置即内容、填字段别造组件、类型兜底",
+        "section": "8,9"
+      },
+      {
+        "id": 14,
+        "point": "数字人选型与落地：定位陪衬→AI 列真人/写实/二次元(VRM)+坑→对约束选定 VRM、不做对口型→AI 落地（取景/脚稳）",
+        "section": "10,11"
+      },
+      {
+        "id": 15,
+        "point": "三步法回顾 + 没基础也能复制",
+        "section": "12"
+      },
+      {
+        "id": 16,
+        "point": "关注 + 下期预告（EP03 字幕匹配）",
+        "section": "12"
+      }
     ]
   }
 }

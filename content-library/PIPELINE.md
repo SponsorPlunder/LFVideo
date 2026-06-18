@@ -17,7 +17,7 @@
 |----|---------|---------|------------|---------|----------|--------|---------|--------|-------|--------|--------|--------|--------|------|
 | **《Vibe Coding 造一条自动化视频生产线》** | | | | | | | | | | | | | | |
 | ep01-video-agent-overview | - | - | - | - | - | - | - | - | - | - | - | - | - | 总览 · 系列总览/总结（含技术选型复盘）；最后制作、发布置顶第 1 期 |
-| ep02-video-render | approved | draft | draft | draft | suspended | draft | draft | draft | suspended | suspended | suspended | suspended | suspended | 视频渲染 · 场景组件系统 + VRM 主持人（本期）；02 软文(tutorial.final 已 approved)+分镜、03 视听编排、04 脚本、06 TTS、07 组装均已按"教人用 Vibe Coding"两步主线重做并 13 段一一对齐（draft 待复核）；06 已重合成 13 段 WAV(363.90s)，05 B轨录屏暂缓(suspended) |
+| ep02-video-render | approved | draft | superseded | draft | suspended | draft | draft | draft | suspended | suspended | suspended | suspended | suspended | 视频渲染 · 场景组件系统 + VRM 数字人（本期）；**03+04 已合并为「分镜口播稿」**（产物 `04-script/README.md`，删除独立 03 产物，故 03 列置 `superseded`）：12 段画面+口播一体，按数字人选型版 `tutorial.final.md` 重生成，MD↔JSON voice 12/12、coverage 16/16、lint 0 error；上游 `tutorial.final` 仍 `draft`，故 04 保持 `draft`；06/07 仍按旧 13 段产物（待 04 推进后统一重出，结构漂移 warning 属预期），05 B轨录屏暂缓(suspended) |
 | ep03-video-subtitle | - | - | - | - | - | - | - | - | - | - | - | - | - | 字幕匹配 · Whisper 字级时间戳驱动弹跳字幕 |
 | ep04-video-audio | - | - | - | - | - | - | - | - | - | - | - | - | - | 音频混音 · 智能混音、气口与响度标准化 |
 | ep05-video-pipeline | - | - | - | - | - | - | - | - | - | - | - | - | - | 工作流构建 · 13 阶段状态机 + Schema 校验门 |
